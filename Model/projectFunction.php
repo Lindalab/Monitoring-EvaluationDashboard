@@ -52,4 +52,22 @@ function projectIdsAndSdgAligned($Project_id){
     return select($query);
 }
 
+function projectUnderADepartmentAndStatus($department){
+    $query=" Select Project. Project_name , Project.Project_status 
+    from Project, Department
+    where Project.department_id=Department.depart_id
+    and depart_name= '$department' ";
+    return select($query);
+}
+
+function projectUnderADepartmentSDG($department){
+    $query= "Select Project.Project_name , SDG.SD_goals 
+    from Project, SDG ,SDG_Project, Department
+    where Project.Projectid= SDG_Project.Projectid
+    and  SDG.SDG_ID= SDG_Project.SDG_ID
+    and Project.department_id=Department.depart_id
+    and depart_name= '$department'";
+    return select($query);
+}
+
 ?>
