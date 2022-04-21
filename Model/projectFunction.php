@@ -70,4 +70,23 @@ function projectUnderADepartmentSDG($department){
     return select($query);
 }
 
+function projectCoaches(){
+    $query="select Stakeholders.fname, Stakeholders.lname, Stakeholders.contact, Stakeholders.email, Stakeholders.gender
+    from Stakeholders, Coaches_Project, Roles
+    where  Stakeholders.stakeholderid= Coaches_Project.stakeholderid
+    and  Stakeholders.role_id= Roles.role_id
+    and Roles.role_name = 'Company_coache_grants' or 'Company_coache' or 'Individual_Coache' ";
+    return select($query);
+}
+
+function companyCoaches(){
+    $query="select Stakeholders.fname, Stakeholders.lname, Stakeholders.contact, Stakeholders.email, Stakeholders.gender
+    from Stakeholders, Coaches_Project, Roles
+    where  Stakeholders.stakeholderid= Coaches_Project.stakeholderid
+    and  Stakeholders.role_id= Roles.role_id
+    and Roles.role_name = 'Company_Coaches' and 'Company_coache_grants' ";
+    return select($query);  
+}
+
+
 ?>

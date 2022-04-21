@@ -1,0 +1,2 @@
+-- Finish functions by Tomoro
+--Refined  all function
