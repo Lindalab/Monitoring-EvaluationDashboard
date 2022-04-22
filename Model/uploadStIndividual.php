@@ -47,7 +47,7 @@ if(isset($_POST['submit'])){
 
 
 
-INSERT INTO `companies`(`stakeholderid`, `company_name`) VALUES ('[value-1]','[value-2]')
+
 
 
 

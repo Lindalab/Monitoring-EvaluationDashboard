@@ -1,5 +1,5 @@
 <?php
-require("dbconnect.php");
+require("coursesFunctions.php");
 
 if(isset($_POST['submit'])){
     $fileMimes = array(
@@ -24,12 +24,12 @@ if(isset($_POST['submit'])){
                 // Parse data from CSV file line by line
                 while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE)
                 {   // Get row data
-                    $course_name = $getData[0];
+                    $name = $getData[0];
                     $date_started = $getData[1];
-                    $course_status = $getData[2];
-                    $course_description = $getData[3];
-                    require("coursesFunctions.php");
-                    insertintoCourse($course_name,$date_started ,$course_status,$course_description);
+                    $status = $getData[2];
+                    $description = $getData[3];
+                    
+                    insertintoCourse($name,$date_started ,$status,$description);
                 }
                 // Close opened CSV file
                 fclose($csvFile);

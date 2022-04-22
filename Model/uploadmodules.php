@@ -1,5 +1,5 @@
 <?php
-require("dbconnect.php");
+ require("coursesFunctions.php");
 
 if(isset($_POST['submit'])){
     $fileMimes = array(
@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){
                     $course_id = $getData[0];
                     $module_name = $getData[1];
                     $module_description = $getData[2];
-                    require("coursesFunctions.php");
+                   
                     insertintoModules($course_id,$module_name, $module_description);
                 }
                 // Close opened CSV file

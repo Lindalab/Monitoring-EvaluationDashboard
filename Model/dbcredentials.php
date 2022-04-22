@@ -2,7 +2,7 @@
 $servername='localhost';
 $username='root';
 $password='';
-$dbname = "Tryme";
+$dbname = "Monitoring_Evalution_Dashboard";
 
 
 ?>

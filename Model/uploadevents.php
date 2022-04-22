@@ -1,5 +1,5 @@
 <?php
-require("dbconnect.php");
+require("eventFunctions.php");
 if(isset($_POST['submit'])){
     $fileMimes = array(
         'text/x-comma-separated-values',
@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
                     $event_target_group= $getData[4];
                     $event_type = $getData[5];
                     $event_description = $getData[6];
-                    require("eventFunctions.php");
+                    
                     insertintoEvent( $department_id,$event_name ,$event_start_date,$event_end_date ,$event_target_group,$event_type ,$event_description );
                     
                     

@@ -2,6 +2,12 @@
 require ("sqlfunctions.php");
 // delete update
 
+function insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescription){
+    $query= "insert into `courses`(`course_name`, `date_started`, `course_status`, `course_description`) 
+    VALUES('$courseName','$courseDate','$courseStatus', '$courseDescription') ";
+    return insert($query);
+}
+
 function showCoursesAndModules(){
     $query="Select  modules.module_name As Modules , modules.module_description As Description,
     Courses.course_name AS Courses,Courses.course_status As CourseStatus
@@ -42,11 +48,7 @@ function updateACourseStatus($courseid, $courseStatus){
     return delete($query);
 }
 
-function insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescription){
-    $query= "insert into `courses`(`course_name`, `date_started`, `course_status`, `course_description`) 
-    VALUES('$courseName','$courseDate','$courseStatus', '$courseDescription') ";
-    return insert($query);
-}
+
 
 /* Modules */
 

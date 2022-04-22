@@ -1,5 +1,5 @@
 <?php
-require("dbconnect.php");
+require("projectFunctions.php");
 
 if(isset($_POST['submit'])){
     $fileMimes = array(
@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
                     $Project_location = $getData[6];
                     $Project_type = $getData[7];
 
-                    require("projectFunctions.php");
+                    
                     insertIntoProject($department_id,$Project_name,$Project_description,$Communication_type,$Project_status
                     ,$Project_industry ,$Project_location ,$Project_type);
                 }

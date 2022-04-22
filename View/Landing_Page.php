@@ -12,7 +12,7 @@
   </head>
   <body>
     <h1>Hello, world!</h1>
-      <form method="post" action="..\Control\upload.php"  enctype="multipart/form-data" >
+      <form method="post" action="..\Model\uploadcourses.php"  enctype="multipart/form-data" >
       <label for="customFileInput">choose file</label> <br>
         <input type="file" id="customFileInput" aria-describedby="customFileInput" name="file">
           

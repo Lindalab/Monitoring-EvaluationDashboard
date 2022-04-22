@@ -1,6 +1,6 @@
 
 <?php
-require("dbconnect.php");
+require("stakeholders.php");
 
 if(isset($_POST['submit'])){
     $fileMimes = array(
@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
                     $email = $getData[6];
                     $address = $getData[7];
 
-                    require("stakeholders.php");
+                    
                     createCompany($company_name, $contact, $email, $address);
                     
                 }

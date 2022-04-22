@@ -1,5 +1,5 @@
 <?php
-    require "sqlfunctionas.php";
+    require "sqlfunctions.php";
 
     function createStakeholder($contact, $email, $address){
 
@@ -44,18 +44,21 @@
     }
 
     function viewAllIndividuals(){
-        $query = "SELECT `stakeholderid`, `contact`, `email`, `address`,fname, lname, gender FROM `stakeholders`, `Individuals` WHERE Individuals.stakeholderid = stakeholders.stakeholderid";
+        $query = "SELECT stakeholders.stakeholderid,fname, lname, gender, `contact`, `email`, `address` 
+        FROM stakeholders, Individuals where stakeholders.stakeholderid=individuals.stakeholderid";
         return select($query);
     }
 
     function viewAllCompanies(){
-        $query = "SELECT `stakeholderid`, `contact`, `email`, `address`, company_name FROM `stakeholders`, companies WHERE companies.stakeholderid = stakeholders.stakeholderid";
+        $query = "SELECT stakeholders.stakeholderid,companies.company_name,stakeholders.contact,stakeholders.email,stakeholders.address from stakeholders,companies where stakeholders.stakeholderid=companies.stakeholderid";
         return select(query);
     }
 
     function viewAllStudents(){
-        $query = "SELECT fname, lname, gender, major, `level`, `contact`, `email`, `address` 
-        FROM stakeholders, Individuals, ";
+        $query = "Select DISTINCT fname, lname, major, level, email, address,
+         contact, stakeholders.stakeholderid, gender, individuals.role_id FROM students, stakeholders, individuals 
+        WHERE students.stakeholderid = individuals.stakeholderid and 
+        stakeholders.stakeholderid = individuals.stakeholderid ";
 
         return select($query);
     
