@@ -117,4 +117,15 @@ function SearchProject($projectName){
     return select($query);
 }
 
+function insertIntoProject($department_id, $Project_name,$Project_description,$Communication_type,
+$Project_status, $Project_industry,$Project_location,$Project_type){
+    $query="INSERT INTO `project`(`department_id`, `Project_name`, `Project_description`,
+    `Communication_type`, `Project_status`, `Project_industry`, `Project_location`, `Project_type`)
+     VALUES ('$department_id','$Project_name','$Project_description','$Communication_type',
+     '$Project_status','$Project_industry','$Project_location','$Project_type')";
+    return insert($query);
+}
+
 ?>
+
+

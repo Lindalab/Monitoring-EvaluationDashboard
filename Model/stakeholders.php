@@ -54,7 +54,11 @@
     }
 
     function viewAllStudents(){
+        $query = "SELECT fname, lname, gender, major, `level`, `contact`, `email`, `address` 
+        FROM stakeholders, Individuals, ";
 
+        return select($query);
+    
     }
 
 

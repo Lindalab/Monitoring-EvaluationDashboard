@@ -24,18 +24,18 @@ if(isset($_POST['submit'])){
                 // Parse data from CSV file line by line
                 while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE)
                 {   // Get row data
-                    $department_id = $getData[0];
-                    $Grantid = $getData[1];
-                    $Project_SDG = $getData[2];
-                    $Project_name = $getData[3];
+                    $department_id  = $getData[0];
+                    $Project_name = $getData[1];
+                    $Project_description = $getData[2];
+                    $Communication_type = $getData[3];
                     $Project_status = $getData[4];
                     $Project_industry = $getData[5];
                     $Project_location = $getData[6];
                     $Project_type = $getData[7];
 
-                    require("..\Model\sqlfunctions.php");
-                    $Query="";
-                    insert($Query);
+                    require("projectFunctions.php");
+                    insertIntoProject($department_id,$Project_name,$Project_description,$Communication_type,$Project_status
+                    ,$Project_industry ,$Project_location ,$Project_type);
                 }
                 // Close opened CSV file
                 fclose($csvFile);
@@ -44,6 +44,13 @@ if(isset($_POST['submit'])){
         else{echo "Please select valid file";}
     }
 ?>
+
+
+
+
+
+
+
 
 
 

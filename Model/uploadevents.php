@@ -27,17 +27,17 @@ if(isset($_POST['submit'])){
             while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE)
                 {
                     // Getting row data from csv file
-                    $Grantid = $getData[0];
-                    $department_id = $getData[1];
-                    $event_name = $getData[2];
-                    $event_start_date = $getData[3];
-                    $event_end_date = $getData[4];
-                    $numberof_attendees = $getData[5];
-                    $event_type = $getData[6];
-                    $event_description = $getData[7];
-                    require("..\Model\sqlfunctions.php");
-                    $Query="";
-                    insert($Query);
+                    $department_id = $getData[0];
+                    $event_name = $getData[1];
+                    $event_start_date = $getData[2];
+                    $event_end_date = $getData[3];
+                    $event_target_group= $getData[4];
+                    $event_type = $getData[5];
+                    $event_description = $getData[6];
+                    require("eventFunctions.php");
+                    insertintoEvent( $department_id,$event_name ,$event_start_date,$event_end_date ,$event_target_group,$event_type ,$event_description );
+                    
+                    
                 }
                 // Close opened CSV file
                 fclose($csvFile);
@@ -47,4 +47,8 @@ if(isset($_POST['submit'])){
         { echo "Please select valid file";}
     }
 ?>
+
+
+
+
 
