@@ -60,9 +60,10 @@ function eventTypeAttendByAParticluarStakeholder($role_id,$eventType){
     where  Stakeholder_Event.eventid= Events.eventid
     and Stakeholder_Event.stakeholderid= Individuals.stakeholderid
     and Stakeholders. stakeholderid= Individuals.stakeholderid
+    and Individuals.role_id= Roles.role_id
     and Events.event_type= '$eventType'
     and Individuals.role_id= '$role_id' 
-    and Individuals.role_id= Roles.role_id";
+    ";
     
     return select($query);
 
@@ -70,27 +71,29 @@ function eventTypeAttendByAParticluarStakeholder($role_id,$eventType){
 
 
 function deleteAnEvent($eventid){
-    $query=" ";
+    $query="DELETE FROM `events` WHERE eventid = '$eventid' ";
     return delete($query);
 }
 
-function updateAnEventName($eventid, $courseName){
-    $query=" ";
+function updateAnEventName($eventid, $event_name){
+    $query=" UPDATE `events` SET `event_name`='$event_name' WHERE eventid ='$eventid' ";
     return delete($query);
 }
 
-function updateEventType($eventid, $courseStatus){
-    $query=" ";
+function updateEventType($eventid, $event_type){
+    $query="UPDATE `events` SET `event_type`='$event_type' WHERE eventid= '$eventid' ";
     return delete($query);
 }
 
-function updateEventDescription($eventid, $courseStatus){
-    $query=" ";
+function updateEventDescription($eventid, $event_description){
+    $query="UPDATE `events` SET `event_description`='$event_description' WHERE eventid= '$eventid' ";
     return delete($query);
 }
 
-function insertintoEvent($eventid,$courseDate, $courseStatus, $courseDescription){
-    $query= " ";
+function insertintoEvent($department_id,$event_name, $event_start_date, $event_end_date,
+$event_target_group,$event_type,$event_description){
+    $query= " INSERT INTO `events`(`department_id`, `event_name`, `event_start_date`, `event_end_date`, `event_target_group`,`event_type`, `event_description`)
+     VALUES ('$department_id','$event_name','$event_start_date',' $event_end_date','$event_target_group','$event_type','$event_description')";
     return insert($query);
 }
 

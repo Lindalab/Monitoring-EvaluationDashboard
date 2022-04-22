@@ -1,18 +1,23 @@
 <?php
 
 function projectInfoStatus(){
-    $query="Select  Project.Project_name, Stakeholders.fname, Stakeholders.lname ,Stakeholders.contact, Project.Project_status 
-    from  Project , Stakeholders, Student_Project
-    where Project.projectid= Student_Project.projectid
-    and  Stakeholders.stakeholderid= Student_Project.stakeholderid";
+    $query="Select  Project.Project_name,Individuals.fname, Individuals.lname ,Stakeholders.contact,
+    Project.Project_description, Project.Project_status 
+    from  Project , Stakeholders, Stakholder_Project, Individuals
+    where Project.projectid= Stakholder_Project.projectid
+    and Stakeholders.stakeholderid=Stakholder_Project.stakeholderid
+    and  Stakeholders.stakeholderid= Individuals.stakeholderid
+    and Stakholder_Project.stakholder_type = 'Owner' ";
     return select($query);
 }
 
 function projectInfoByAStatus($Project_status){
-    $query="Select  Project.Project_name, Stakeholders.fname, Stakeholders.lname ,Stakeholders.contact 
-    from  Project , Stakeholders, Student_Project
-    where Project.projectid= Student_Project.projectid
-    and  Stakeholders.stakeholderid= Student_Project.stakeholderid
+    $query="Select  Project.Project_name, Individuals.fname, Individuals.lname,Stakeholders.contact,Project.Project_description 
+    from  Project , Stakeholders, Stakholder_Project, Individuals
+    where Project.projectid= Stakholder_Project.projectid
+    and Stakeholders.stakeholderid=Stakholder_Project.stakeholderid
+    and  Stakeholders.stakeholderid= Individuals.stakeholderid
+    and Stakholder_Project.stakholder_type = 'Owner'
     and  Project.Project_status= '$Project_status'";
     return select($query);
 }
@@ -71,22 +76,45 @@ function projectUnderADepartmentSDG($department){
 }
 
 function projectCoaches(){
-    $query="select Stakeholders.fname, Stakeholders.lname, Stakeholders.contact, Stakeholders.email, Stakeholders.gender
-    from Stakeholders, Coaches_Project, Roles
-    where  Stakeholders.stakeholderid= Coaches_Project.stakeholderid
-    and  Stakeholders.role_id= Roles.role_id
-    and Roles.role_name = 'Company_coache_grants' or 'Company_coache' or 'Individual_Coache' ";
+    $query="select Individuals.fname, Individuals.lname, Stakeholders.contact, Stakeholders.email, Individuals.gender
+    from Stakeholders, Stakeholder_Project, Individuals
+    where  Stakeholders.stakeholderid= Stakeholder_Project.stakeholderid
+    and Individuals.stakeholderid = Stakeholders.stakeholderid
+    and Stakeholder_Project.stakeholder_type = 'Coache'
+    ";
     return select($query);
 }
 
-function companyCoaches(){
-    $query="select Stakeholders.fname, Stakeholders.lname, Stakeholders.contact, Stakeholders.email, Stakeholders.gender
-    from Stakeholders, Coaches_Project, Roles
-    where  Stakeholders.stakeholderid= Coaches_Project.stakeholderid
-    and  Stakeholders.role_id= Roles.role_id
-    and Roles.role_name = 'Company_Coaches' and 'Company_coache_grants' ";
-    return select($query);  
+
+/* Edit And Update */
+
+function updateProject($Project_id, $department_id, $Project_name, $Communication_type,    
+$industry, $project_location, $project_type, $project_status){
+    $query = "UPDATE `project` SET `department_id`='$department_id',`Project_name`='$Project_name',`Communication_type`='$Communication_type',`Project_status`='$Project_status',`Project_industry`='$industry',`Project_location`='$project_location',`Project_type`='$project_type' WHERE `Projectid` = '$Project_id'";
+    return update($query);
 }
 
+
+function editProjectName($Projectid, $Project_name){
+    $query = "UPDATE `project` SET `Project_name`='$Project_name', ' WHERE `Projectid` = '$Projectid'";
+    return update($query);
+}
+
+function editProjectStatus($Projectid, $Project_Status){
+    $query = "UPDATE `project` SET `Project_status`='$Project_status' WHERE `Projectid` = '$Projectid'";
+    return update($query);
+}
+
+function deleteProject($projectid){
+    $query = "DELETE FROM `project` WHERE `Projectid` = $projetid";
+    return delete($query);
+}
+
+// find the a project based on the name 
+function SearchProject($projectName){
+    $query = "SELECT `Projectid`, `department_id`, `Project_SDG`, `Project_name`, `Communication_type`, `Project_status`, `Project_industry`, `Project_location`, `Project_type` FROM `project` WHERE `Project_name`LIKE '%$projectName%'";
+    
+    return select($query);
+}
 
 ?>

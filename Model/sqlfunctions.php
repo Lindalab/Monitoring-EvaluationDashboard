@@ -39,6 +39,16 @@ function delete($sqlDelete){
      return false;
 }
 
+function getLastInsertedID($sql){
+    require ("dbconnect.php");
+    $result = $conn->query($sql);
+    if($result === TRUE){
+        return $conn->insert_id;
+    }
+    return -1;
+
+}
+
 function update($sqlUpdate){
     require ("dbconnect.php");
     $updateResult=$conn->query($sqlUpdate);
