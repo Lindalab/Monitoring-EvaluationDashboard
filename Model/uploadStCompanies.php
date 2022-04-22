@@ -1,3 +1,4 @@
+
 <?php
 require("dbconnect.php");
 
@@ -24,17 +25,13 @@ if(isset($_POST['submit'])){
                 // Parse data from CSV file line by line
                 while (($getData = fgetcsv($csvFile, 10000, ",")) !== FALSE)
                 {   // Get row data
-                    $stakeholderid  = $getData[0];
-                    $fname = $getData[1];
-                    $lname = $getData[2];
-                    $gender = $getData[3];
-                    $role_id = $getData[4];
-                    $contact = $getData[5];
+                    $company_name  = $getData[0];
+                    $contact = $getData[1];
                     $email = $getData[6];
                     $address = $getData[7];
 
                     require("stakeholders.php");
-                    createIndividual($fname, $lname, $gender, $role_id, $contact, $email, $address);
+                    createCompany($company_name, $contact, $email, $address);
                     
                 }
                 // Close opened CSV file
@@ -45,11 +42,6 @@ if(isset($_POST['submit'])){
     }
 ?>
 
-
-
-INSERT INTO `stakeholders`(`stakeholderid`, `contact`, `email`, `address`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')
-INSERT INTO `individuals`(`stakeholderid`, `fname`, `lname`, `gender`, `role_id`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]')
-INSERT INTO `companies`(`stakeholderid`, `company_name`) VALUES ('[value-1]','[value-2]')
 
 
 
