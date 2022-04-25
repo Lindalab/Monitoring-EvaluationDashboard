@@ -1,6 +1,6 @@
 <?php
-require("dbconnect.php");
 
+require("stakeholders.php");
 if(isset($_POST['submit'])){
     $fileMimes = array(
         'text/x-comma-separated-values',
@@ -32,7 +32,7 @@ if(isset($_POST['submit'])){
                     $email = $getData[5];
                     $address = $getData[6];
 
-                    require("stakeholders.php");
+                    
                     createIndividual($fname, $lname, $gender, $role_id, $contact, $email, $address);
                     
                 }

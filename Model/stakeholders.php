@@ -64,6 +64,16 @@
     
     }
 
+    function totalStudent(){
+        $query="select count(Students.stakeholderid) from Students";
+        return select($query);
+    }
+
+    function totalAlumni(){
+        $query="select count(stakeholderid) from Individuals , Roles where Individuals.role_id = Roles.role_id and Roles.role_name = 'Alumni'";
+        return select($query);
+    }
+
 
     
 

@@ -27,6 +27,8 @@ function eventsAttendByAParticularIndividualsGender($role_id){
 
 }
 
+
+
 function eventTypeAttendByAParticluarStakeholderGender($role_id,$eventType){
     $query="select Individuals.gender, count(Individuals.stakeholderid) as number_of_Attendees 
     from Events, Individuals, Stakeholder_Event 
@@ -96,6 +98,13 @@ $event_target_group,$event_type,$event_description){
      VALUES ('$department_id','$event_name','$event_start_date',' $event_end_date','$event_target_group','$event_type','$event_description')";
     return insert($query);
 }
+
+
+function totalEvents(){
+    $query = "SELECT COUNT(eventid) FROM `events` WHERE 1";
+    return select($query);
+}
+
 
 
 

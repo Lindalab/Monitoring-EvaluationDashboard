@@ -58,6 +58,12 @@ function update($sqlUpdate){
        return false;
   }
 
+   function selectAllFromTable($tablename){
+       $query="SELECT * FROM `$tablename` ";
+       return select($query);
+
+   }
+
   
   $updatetest="DELETE FROM `product` WHERE 'id' = '1'";
 

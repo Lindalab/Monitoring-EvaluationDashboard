@@ -1,5 +1,6 @@
 <?php
 
+require "sqlfunctions.php";
 function projectInfoStatus(){
     $query="Select  Project.Project_name,Individuals.fname, Individuals.lname ,Stakeholders.contact,
     Project.Project_description, Project.Project_status 
@@ -57,21 +58,21 @@ function projectIdsAndSdgAligned($Project_id){
     return select($query);
 }
 
-function projectUnderADepartmentAndStatus($department){
+function projectUnderADepartmentAndStatus($depart_id){
     $query=" Select Project. Project_name , Project.Project_status 
     from Project, Department
     where Project.department_id=Department.depart_id
-    and depart_name= '$department' ";
+    and depart_name= '$depart_id' ";
     return select($query);
 }
 
-function projectUnderADepartmentSDG($department){
+function projectUnderADepartmentSDG($depart_id){
     $query= "Select Project.Project_name , SDG.SD_goals 
     from Project, SDG ,SDG_Project, Department
     where Project.Projectid= SDG_Project.Projectid
     and  SDG.SDG_ID= SDG_Project.SDG_ID
     and Project.department_id=Department.depart_id
-    and depart_name= '$department'";
+    and depart_name= '$depart_id'";
     return select($query);
 }
 
@@ -125,6 +126,12 @@ $Project_status, $Project_industry,$Project_location,$Project_type){
      '$Project_status','$Project_industry','$Project_location','$Project_type')";
     return insert($query);
 }
+
+
+function TotalProject(){
+    $query = "SELECT COUNT(Projectid) as Total_Project from project";
+     return select($query);
+   }
 
 ?>
 
