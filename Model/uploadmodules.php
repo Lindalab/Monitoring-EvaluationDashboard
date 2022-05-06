@@ -2,6 +2,7 @@
  require("coursesFunctions.php");
 
 if(isset($_POST['submit'])){
+    $course_id= $_POST['course_id'];
     $fileMimes = array(
         'text/x-comma-separated-values',
         'text/comma-separated-values',

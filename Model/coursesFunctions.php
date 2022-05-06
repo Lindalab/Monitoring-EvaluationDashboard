@@ -1,11 +1,32 @@
 <?php
 require ("sqlfunctions.php");
+
 // delete update
+
+function totalCourses(){
+    $query=" select count(course_name) from courses;";
+    return select($query);
+}
+
+function coursesAndNumberOfModules(){
+    $query=" Select  Courses.course_name AS Courses,
+    count(modules.course_id ) As Modules 
+    from Courses, modules
+    where Courses.course_id=modules.course_id";
+    return select($query);
+}
+
+
 
 function insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescription){
     $query= "insert into `courses`(`course_name`, `date_started`, `course_status`, `course_description`) 
     VALUES('$courseName','$courseDate','$courseStatus', '$courseDescription') ";
     return insert($query);
+}
+
+function showAllCourses(){
+    $query="SELECT * FROM `courses`";
+    return select($query);
 }
 
 function showCoursesAndModules(){
@@ -17,7 +38,7 @@ function showCoursesAndModules(){
 
 }
 
-function coursesAndNumberOfModules(){
+function coursesinfoAndNumberOfModules(){
     $query=" Select  Courses.course_name AS Courses,Courses.course_status As CourseStatus,
     count(modules.module_name) As Modules 
     from Courses, modules
@@ -25,12 +46,13 @@ function coursesAndNumberOfModules(){
     return select($query);
 }
 
-function modulesUnderParticularCourse($Course){
-    $query=" Select  modules.module_name As Modules , modules.module_description As Description
+function modulesUnderParticularCourse($Course_id){
+    $query=" Select  modules.module_name As Modules , modules.module_description As Description,
+    Courses.course_name AS Courses,Courses.course_status As CourseStatus
     from Courses, modules
     where Courses.course_id=modules.course_id
-    and Courses.course_name= '$Course'";
-    return select($Course);
+    and Courses.course_id= '$Course_id'";
+    return select($query);
 }
 
 function deleteACourse($courseid){

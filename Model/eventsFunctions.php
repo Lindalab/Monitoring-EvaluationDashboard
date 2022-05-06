@@ -2,6 +2,7 @@
 
 
 require ("sqlfunctions.php");
+
 // check number of times various events has happen
 function eventOccurrance(){
     $query="select *, count(event_name) from Events group by event_name";
@@ -14,9 +15,27 @@ function eventOccurranceByType($eventType){
     return select($query);
 }
 
+ //Graphed
+function numberOfTimesEventsHappens(){
+    $query="select event_type as EventType, count(event_type) as number_of_Occurance from Events group by event_type";
+    return select($query);
+
+}
+
+ //Graphed
+function eventsAttendByAParticularIndividualsGender(){
+    $query="select Individuals.gender as gender, count(Individuals.stakeholderid) as number_of_Attendees from Events, Individuals, Stakeholder_Event 
+    where  Stakeholder_Event.eventid= Events.eventid
+    and Stakeholder_Event.stakeholderid= Individuals.stakeholderid 
+    group by Individuals.gender";
+    return select($query);
+
+}
 
 
-function eventsAttendByAParticularIndividualsGender($role_id){
+
+
+function eventsAttendByAParticularIndividualsGenders($role_id){
     $query="select Individuals.gender, count(Individuals.stakeholderid) as number_of_Attendees , Events.event_type
     from Events, Individuals, Stakeholder_Event 
     where  Stakeholder_Event.eventid= Events.eventid
@@ -101,8 +120,87 @@ $event_target_group,$event_type,$event_description){
 
 
 function totalEvents(){
-    $query = "SELECT COUNT(eventid) FROM `events` WHERE 1";
+    $query = "SELECT COUNT(eventid) as number FROM `events`";
+    return totalAll($query,"number");
+}
+
+//Graphed
+function numberofStakeholderAttendingAnEventType(){
+    $query="SELECT event_type, count(stakeholder_event.stakeholderid) as number 
+    from events, stakeholder_event 
+    where events.eventid=stakeholder_event.eventid group by event_type";
     return select($query);
+}
+
+function mutiplyBarChartsForEventTypeAttendence(){
+    $query="SELECT events.event_type as EventType, SUM(students.level='Freshman') as Freshman, SUM(students.level='Sophormore') as Sophormore , SUM(students.level='Junior') as Junior, SUM(students.level='Senior') as Senior from events,individuals,students,stakeholder_event where events.eventid=stakeholder_event.eventid and individuals.stakeholderid=stakeholder_event.stakeholderid and students.stakeholderid=individuals.stakeholderid group by events.event_type";
+    return select($query);
+
+}
+
+function studentOrganisedEvents(){
+    $query="SELECT count(event_name) from events where event_target_group= 'Students'";
+    return select($query);
+}
+
+function totalCareerFair(){
+    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Career Fair'";
+    return totalAll($query,"number");
+
+}
+
+function totalhackton(){
+    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Hackathon'";
+    return totalAll($query,"number");
+}
+
+function totalInforSession(){
+    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Information Session'";
+    return totalAll($query,"number");
+}
+
+function allFromEvent(){
+    $query="SELECT * FROM `events`";
+    return select($query);
+
+}
+
+function displayEvents(){
+
+    $result = allFromEvent();
+        // eventid	department_id	event_name	event_start_date	event_end_date	event_target_group	event_type	event_description 
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['eventid'];
+                $eventname = $row['event_name'];
+                $startDate = $row['event_start_date'];
+                $endDate = $row['event_end_date'];
+                $targetGroup = $row['event_target_group'];
+                $type = $row['event_type'];
+                $description = $row['event_description'];
+
+                echo "<tr> <td>
+        <span class='custom-checkbox'>
+            <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
+            <label for='checkbox1'></label>
+        </span>
+    </td>
+    <td>$eventname</td>
+    <td>$startDate</td>
+    <td>$endDate</td>
+    <td>$targetGroup</td>
+    <td>$type</td>
+    <td>$description</td>
+    <td>
+        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+
+        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+    </td>
+</tr>";
+            }
+        }
+
+    
 }
 
 

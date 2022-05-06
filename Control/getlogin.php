@@ -1,11 +1,12 @@
 <?php
 require "../Model/dbconnect.php";
+require " ../Model/sqlfunctions.php";
 
 // keep track of errors
 $errors = array();
 
 if(isset($_POST["submit"])){
-    echo "I love you";
+    
     $email = $_POST["email"];
     $password = $_POST["password"];
     
@@ -26,17 +27,28 @@ if(isset($_POST["submit"])){
         array_push($errors, "enter a valid email address");
     }
 
+    
+
+
     // if form is fine
     if(count($errors) == 0){
-        
-            $password = md5($password);
-
-            
-    }else{
+        // Validating login Credentials
+        select("SELECT `email`, `password` FROM `admin`
+         WHERE  email='$email' and passwords = '$password' ");
+         // if statement to allow Login if match found
+         if($result-> num_rows > 0){
+            header("location:..\View\Landing_Page.php");
+            exit;
+        }
+         else{
+              echo "Wrong credentials for Login";
+            }
+    }
+    else{
         session_start();
         // store the errors inside session
         $_SESSION["errors"] = $errors;
-        header("location: Landing_Page.php");
+        header("location:../View/Adminpage.php");
     }
     
 

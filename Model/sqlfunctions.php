@@ -7,15 +7,8 @@ require ("dbconnect.php");
 function select($sqlSelectQuery){
     require ("dbconnect.php");
     $runQuery=$conn->query($sqlSelectQuery);
-    $resultArray=array();
-    if($runQuery->num_rows > 0){
-    while($row = $conn->fetch_assoc($runQuery)) { 
-        $resultArray[] = $row; 
-    }
-    return $resultArray;
-    }
-    
-    return -1;
+
+    return $runQuery;
 }
 
 
@@ -58,16 +51,16 @@ function update($sqlUpdate){
        return false;
   }
 
-   function selectAllFromTable($tablename){
-       $query="SELECT * FROM `$tablename` ";
-       return select($query);
 
-   }
+  function totalAll($query,$target){
+    $result = select($query);
+    if($result->num_rows > 0){
+        $row = mysqli_fetch_assoc($result);
+        return $row[$target];
+    }
 
-  
-  $updatetest="DELETE FROM `product` WHERE 'id' = '1'";
-
-delete($updatetest);
+}
+   
 
 
 

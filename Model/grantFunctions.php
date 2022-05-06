@@ -67,7 +67,7 @@ function totalDepartmentUnderGrant(){
 
 
 function departmentTotalGrant(){
-    $query = "SELECT department.depart_id, department.depart_name, SUM(`Amountgiven`) FROM `grant_department`, department, grants WHERE grant_department.department_id = department.depart_id and grants.Grantid = grant_department.Grantid GROUP BY department.depart_id";
+    $query = "SELECT department.depart_id, department.depart_name as Department, SUM(`Amountgiven`) as total_grant FROM `grant_department`, department, grants WHERE grant_department.department_id = department.depart_id and grants.Grantid = grant_department.Grantid GROUP BY department.depart_id";
 
     return select($query);
 }
