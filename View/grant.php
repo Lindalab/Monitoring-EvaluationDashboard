@@ -110,8 +110,11 @@
                 </div> -->
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color: #634242">grants received</div>
-                        <div class="number" style="color:#634242">300</div>
+                        <div class="box-topic" style="color: #634242">Total Grants received</div>
+                        <div class="number" style="color:#634242"><?php 
+                            require "..\Model\grantFunctions.php";
+                            echo displayTotalGrantsRecieved();
+                        ?></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -136,8 +139,8 @@
                 </div> -->
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color: #c00000">Medium received</div>
-                        <div class="number" style="color:#c00000">$12,876</div>
+                        <div class="box-topic" style="color: #c00000">Project Grant</div>
+                        <div class="number" style="color:#c00000"><?php echo projectTotalGrantReceived()  ?></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -160,8 +163,8 @@
                 </div> -->
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color:rgb(84, 20, 20)">Total number of sponsors</div>
-                        <div class="number" style="color:rgb(84, 20, 20)">11</div>
+                        <div class="box-topic" style="color:rgb(84, 20, 20)">Projects Under Grant</div>
+                        <div class="number" style="color:rgb(84, 20, 20)"><?php echo displayTotalProjectUnderGrants()?></div>
                         <div class="indicator">
                             <i class='bx bx-down-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -210,58 +213,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>obenfo & sons</td>
-                                    <td>$300</td>
-                                    <td>2022/04/01</td>
+                               
+                                <?php
+                                    
+                                    displayTableData();
 
-                                    <td>Bank</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Despite group of companies </td>
-                                    <td>$300</td>
-                                    <td>2022/05/02</td>
-
-                                    <td>Bank</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Dangote</td>
-                                    <td>$300</td>
-                                    <td>2022/03/01</td>
-
-                                    <td>Bank</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-
+                                ?>
 
                             </tbody>
                         </table>

@@ -1,7 +1,7 @@
 <?php
 
-require "stakeholders.php";
-require "sqlfunctions.php";
+
+require_once "sqlfunctions.php";
 
 function inforAboutGrant(){
     $query="SELECT `Grantid`, `stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `grants`";
@@ -56,7 +56,7 @@ function addNewGrant($stakeholderid, $Grant_name, $Grant_amount, $Date_received,
 
 function totalGrantRecieved(){
     $name= "Total Grants";
-    $query="SELECT sum(grants.Grant_Amount) as $name  FROM grants";
+    $query="SELECT sum(grants.Grant_Amount) as amount FROM grants";
     return select($query);
 }
 
@@ -79,12 +79,66 @@ function grantForDepartment(){
 }
 
 function projectTotalGrantReceived(){
-    $query = "SELECT `Grantid`, project.Project_name, project.Projectid, SUM(`Amountgiven`) FROM `grant_project`, project WHERE grant_project.Projectid = project.Projectid GROUP BY grant_project.Projectid";
+    $query = "SELECT `Grantid`, project.Project_name, project.Projectid, SUM(`Amountgiven`) as total FROM `grant_project`, project WHERE grant_project.Projectid = project.Projectid";
 
-    return select($query);
+    return totalAll($query,"total");
 }
 
 
+
+function displayTotalGrantsRecieved(){
+   $result =  totalGrantRecieved();
+
+   if($result->num_rows > 0){
+       $row = mysqli_fetch_assoc($result);
+       return $row['amount'];
+   }
+}
+
+function displayTotalProjectUnderGrants(){
+    $query = "SELECT COUNT(DISTINCT`Projectid`) as number FROM `grant_project`";
+    return totalAll($query,"number");
+}
+
+function displayTableData(){
+    $result = inforAboutGrant();
+
+    //SELECT `Grantid`, `stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `grants`";
+
+    if($result->num_rows > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $Grant_id = $row['Grantid'];
+            $stakeholderid = $row['stakeholderid'];
+            $Grant_name = $row['Grant_name'];
+            $Grant_amount = $row['Grant_Amount'];
+            $Date_received = $row['Date_Recieved'];
+            $medium_received = $row['Medium_recieved'];
+            echo "<tr>
+            <form>
+            <td>
+                <span class='custom-checkbox'>
+                <input type='checkbox' id='checkbox1' name='options[]' value='1'>
+                <label for='checkbox1'></label>
+                    <input type='hidden' name='id' value=$Grant_id>
+                    <input type='hidden' name='id' value=$stakeholderid>
+                  
+                </span>
+            </td>
+            <td>$Grant_name</td>
+            <td>$Grant_amount</td>
+            <td>$Date_received</td>
+        
+            <td>$medium_received</td>
+            <td>
+                <a href='#editEmployeeModal' class='edit' type = 'submit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>
+                <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>
+            </td>
+            </form>
+        </tr>";
+        
+        }
+    }
+}
 
 ?>
 
