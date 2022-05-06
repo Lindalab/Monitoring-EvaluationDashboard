@@ -4,8 +4,25 @@ require ("sqlfunctions.php");
 // delete update
 
 function totalCourses(){
-    $query=" select count(course_name) from courses;";
-    return select($query);
+    $query=" select count(course_name) as number from courses";
+    return totalAll($query,"number");
+}
+
+function totalModules(){
+    $query="select distinct count(module_id) as number from modules";
+    return totalAll($query,"number");
+}
+
+function totalActiveCourse(){
+    $query="select count(course_name) as number from courses where course_status= 'Active'";
+    return totalAll($query,"number");
+
+}
+
+function totalInactiveCourse(){
+    $query="select count(course_name) as number from courses where course_status= 'Inactive'";
+    return totalAll($query,"number");
+
 }
 
 function coursesAndNumberOfModules(){
@@ -25,7 +42,7 @@ function insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescrip
 }
 
 function showAllCourses(){
-    $query="SELECT * FROM `courses`";
+    $query="SELECT distinct course_name,course_id,date_started,course_status,course_description from courses";
     return select($query);
 }
 
@@ -39,19 +56,17 @@ function showCoursesAndModules(){
 }
 
 function coursesinfoAndNumberOfModules(){
-    $query=" Select  Courses.course_name AS Courses,Courses.course_status As CourseStatus,
+    $query=" Select  Courses.course_name ,Courses.course_status,
     count(modules.module_name) As Modules 
     from Courses, modules
     where Courses.course_id=modules.course_id";
     return select($query);
 }
 
-function modulesUnderParticularCourse($Course_id){
-    $query=" Select  modules.module_name As Modules , modules.module_description As Description,
-    Courses.course_name AS Courses,Courses.course_status As CourseStatus
-    from Courses, modules
-    where Courses.course_id=modules.course_id
-    and Courses.course_id= '$Course_id'";
+function modulesUnderParticularCourse(){
+    $query="Select  modules.module_name As Modules , modules.module_description As Description,
+    Courses.course_name AS Courses from Courses, modules
+    where Courses.course_id=modules.course_id";
     return select($query);
 }
 
@@ -89,5 +104,95 @@ function insertintoModules($course_id,$module_name, $module_description){
     VALUES ('$course_id','$module_name','$module_description') ";
     return insert($query);
 }
+
+
+//Tables
+
+function displayCourses(){
+
+    $result = showAllCourses();
+    // course_id,course_name,course_status,course_description
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['course_id'];
+                $course_name = $row['course_name'];
+                $course_date = $row['date_started'];
+                $course_status = $row['course_status'];
+                $course_description = $row['course_description'];
+                
+
+                echo "<tr> <td>
+        <span class='custom-checkbox'>
+            <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
+            <label for='checkbox1'></label>
+        </span>
+    </td>
+    <td>$course_name</td>
+    <td>$course_status</td>
+    <td>$course_date</td>
+    <td>$course_description</td>
+    
+    <td>
+        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+
+        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+    </td>
+</tr>";
+            }
+        }
+
+}
+// SELECT distinct course_name,course_id,date_started,course_status,course_description from courses
+function displaySelectCourse(){
+    $result = showAllCourses();
+    if($result->num_rows > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $course_id = $row['course_id'];
+            $course_name = $row['course_name'];
+
+            echo "<option value='$course_id'>$course_name</option>";
+        }
+    }
+}
+
+
+function displayModules(){
+
+    $result = modulesUnderParticularCourse();
+    
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['course_id'];
+                $course_name = $row['Modules'];
+                $Module_name = $row['Description'];
+                $Module_description = $row['Courses'];
+                
+                
+
+                echo "<tr> <td>
+        <span class='custom-checkbox'>
+            <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
+            <label for='checkbox1'></label>
+        </span>
+    </td>
+    <td>$Module_name</td>
+    <td>$Module_description</td>
+    <td>$course_name</td>
+    
+    
+    <td>
+        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+
+        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+    </td>
+</tr>";
+            }
+        }
+
+}
+
+
+
+
 
 ?>

@@ -1,3 +1,8 @@
+<?php
+require ("../Model/coursesFunctions.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -103,8 +108,12 @@
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color: #634242">Total number of students</div>
-                        <div class="number" style="color:#634242">300</div>
+                        <div class="box-topic" style="color: #634242">Total Courses</div>
+                        <div class="number" style="color:#634242">
+                        <?php
+                        echo totalCourses();
+                        ?>
+                    </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -117,8 +126,12 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color:#cc0000">Number of Teachers</div>
-                        <div class="number" style="color:#cc0000">94</div>
+                        <div class="box-topic" style="color:#cc0000">Total Modules</div>
+                        <div class="number" style="color:#cc0000">
+                        <?php
+                        echo totalModules();
+                        ?>
+                    </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -131,8 +144,12 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color:rgb(84, 20, 20)">Student to teacher ratio</div>
-                        <div class="number" style="color:rgb(84, 20, 20)">8.5%</div>
+                        <div class="box-topic" style="color:rgb(84, 20, 20)">Active Courses</div>
+                        <div class="number" style="color:rgb(84, 20, 20)">
+                        <?php
+                        echo totalActiveCourse();
+                        ?>
+                    </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -145,8 +162,12 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic" style="color:brown">Course completion rate</div>
-                        <div class="number" style="color:brown">49.9%</div>
+                        <div class="box-topic" style="color:brown">Inactive Courses</div>
+                        <div class="number" style="color:brown">
+                        <?php
+                        echo totalInactiveCourse();
+                        ?>
+                    </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -189,114 +210,16 @@
                                     <th>Course Status</th>
                                     <th>Date Started</th>
                                     <th>Course Description</th>
+                                
                                     <th>Action</th>
 
                                     <!-- coursename, coursestatus, datestarted, modulename, coursedescription -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Advanced communication Technique</td>
-                                    <td>Active</td>
-                                    <td>2022/04/21</td>
-
-                                    <td>Learn to communicate with the investors and team mates</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                            <label for="checkbox2"></label>
-                                        </span>
-                                    </td>
-                                    <td>Foundations of Design Thinking</td>
-                                    <td>Active</td>
-                                    <td>2022/04/01</td>
-
-                                    <td>Introduction to the elements of design thinking for stakeholders</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                            <label for="checkbox3"></label>
-                                        </span>
-                                    </td>
-                                    <td>Advertising skills</td>
-                                    <td>Active</td>
-                                    <td>2022/04/30</td>
-
-                                    <td>Learn to do digital advertising and how to scale project</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                            <label for="checkbox4"></label>
-                                        </span>
-                                    </td>
-                                    <td>Project Management</td>
-                                    <td>Inactive</td>
-                                    <td>2022/04/27</td>
-
-                                    <td>This is a course intro student to time management</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                            <label for="checkbox5"></label>
-                                        </span>
-                                    </td>
-                                    <td>Managing your manager</td>
-                                    <td>Inactive</td>
-                                    <td>2023/04/13</td>
-
-                                    <td>This is how to manage supervisors</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                            <label for="checkbox5"></label>
-                                        </span>
-                                    </td>
-                                    <td>Coaching skills</td>
-                                    <td>Inactive</td>
-                                    <td>2023/03/23</td>
-
-                                    <td>Learn to be a coach</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
+                                <?php
+                                 displayCourses();
+                                ?>
                             </tbody>
                         </table>
                         <div class="clearfix">
@@ -318,7 +241,7 @@
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action = "..\Control\coursesProscessing.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add new course </h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -326,25 +249,27 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>course Name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="cname" required>
                                 </div>
                                 <div class="form-group">
-                                    <label>Course status </label>
-                                    <input type="email" class="form-control" required>
+                                    <label for="active">Active</label>
+                                    <input type="radio" id="active" class="form-control" name="cstatus" value="Active" required>
+                                    <label for="Inactive">Inactive </label>
+                                    <input type="radio" id="Inactive" class="form-control" name="cstatus" value="Inactive" required>
                                 </div>
                                 <div class="form-group">
                                     <label>date started</label>
-                                    <input type="date" class="form-control" required>
+                                    <input type="date" class="form-control" name="cdate"required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Course Descriptions</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="cdescription"required>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
+                                <input type="submit" class="btn btn-success" name="Submit" value="Add">
                             </div>
                         </form>
                     </div>
@@ -433,9 +358,9 @@
                                         <label for="selectAll"></label>
                                     </span>
                                     </th>
-                                    <th>Courses Name</th>
                                     <th>Module name</th>
                                     <th>Module description</th>
+                                    <th>Courses Name</th>
 
                                     <th>Action</th>
 
@@ -443,91 +368,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                    </td>
-                                    <td>Foundations of Design Thinking</td>
-                                    <td>Module 1</td>
-
-
-                                    <td>Introduction to Design Thinking for stakeholders</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                        <label for="checkbox2"></label>
-                                    </span>
-                                    </td>
-                                    <td>Mechanical Engineering</td>
-                                    <td>Module 2</td>
-
-
-                                    <td>Time Management</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                        <label for="checkbox3"></label>
-                                    </span>
-                                    </td>
-                                    <td>Management Information Systems</td>
-                                    <td>Module 3</td>
-
-
-                                    <td>Time Management</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                        <label for="checkbox4"></label>
-                                    </span>
-                                    </td>
-                                    <td>Business Administration</td>
-                                    <td>Module 4</td>
-
-
-                                    <td>Introduction to Design Thinking for stakeholders</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                        <label for="checkbox5"></label>
-                                    </span>
-                                    </td>
-                                    <td>Computer Engineering</td>
-                                    <td>Module 2</td>
-
-
-                                    <td>Introduction to Design Thinking for stakeholders</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
+                                <?php
+                                displayModules();
+                                ?>
                             </tbody>
                         </table>
                         <div class="clearfix">
@@ -549,7 +392,7 @@
             <div id="addEmployee" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\modulesProcessing.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add new module </h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -557,16 +400,22 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>course Name</label>
-                                    <input type="text" class="form-control" required>
+                                    <!-- <input type="text" class="form-control" required> -->
+                                    <select name="course_id" class = "form-control" required>
+                                         <?php
+                                            displaySelectCourse();
+                                         ?>
+                                    </select>
                                 </div>
-
+                                
                                 <div class="form-group">
-                                    <label>Module name</label>
-                                    <input type="text" class="form-control" required>
+                                <label >Module name</label>
+                                
+                                    <input type="text" id = "mn" name="modulename" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Module Description</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="moduleDescription" required>
                                 </div>
                             </div>
                             <div class="modal-footer">

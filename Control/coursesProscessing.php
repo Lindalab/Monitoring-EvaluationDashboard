@@ -4,12 +4,12 @@ require " ../Model/sqlfunctions.php";
 
 
 
-if(isset($_POST["submit"])){
+if(isset($_POST["Submit"])){
     
-    $courseName = $_POST[""];
-    $courseDate = $_POST[""];
-    $courseStatus=$_POST[""];
-    $courseDescription=$_POST[""];
+    $courseName = $_POST["cname"];
+    $courseDate = $_POST["cdate"];
+    $courseStatus=$_POST["cstatus"];
+    $courseDescription=$_POST["cdescription"];
 
     insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescription);
     
