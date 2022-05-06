@@ -140,6 +140,37 @@ function displayTableData(){
     }
 }
 
+function displayPotentialSponsors(){
+    $sql = 'SELECT stakeholders.stakeholderid as id, Concat(individuals.fname," ", individuals.lname) as name from stakeholders, individuals, potential_sponsors where stakeholders.stakeholderid = individuals.stakeholderid and stakeholders.stakeholderid = potential_sponsors.stakeholderid';
+
+    $query = 'SELECT stakeholders.stakeholderid as id, companies.company_name as name from stakeholders, companies, potential_sponsors where stakeholders.stakeholderid = companies.stakeholderid and stakeholders.stakeholderid = potential_sponsors.stakeholderid';
+
+    $result = select($sql);
+    $result2 = select($query);
+
+    if($result->num_rows > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $name = $row['name'];
+            $id = $row['id'];
+            echo "<option value='$id'>$name</option>";
+        }
+    }
+    if($result2->num_rows > 0){
+        while($row = mysqli_fetch_assoc($result2)){
+            $name = $row['name'];
+            $id = $row['id'];
+            echo "<option value='$id'>$name</option>";
+        }
+    }
+
+}
+
+function createGrant( $stakeholderid,$Grant_name, $Grant_amount, $Date_received, $medium_received){
+    $sql = "INSERT INTO `grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
+
+    return select($sql);
+}
+
 ?>
 
 

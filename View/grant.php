@@ -241,33 +241,45 @@
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\grantsProcessing.php" method="POST">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add new grant </h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
+    
                             <div class="modal-body">
+                            <div class="form-group">
+                                    <label>Stakeholder</label>
+                                        <select name="stakeholder" id="cars" class="form-control">
+                                        <?php
+                                            displayPotentialSponsors();        
+                                        ?>
+                                        </select>
+                            </div>
                                 <div class="form-group">
                                     <label>Grant name </label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" name="grant_name" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Amount</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="text" name="amount" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Date Received</label>
-                                    <input type="date" class="form-control" required>
+                                    <input type="date" name="date" class="form-control" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Medium Received</label>
-                                    <input type="text" class="form-control" required>
+                                        <select name="medium_received" id="cars" class="form-control">
+                                        <option value="E-Transfer">E-Transfer</option>
+                                        <option value="Cash">Cash</option>
+                                        </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add">
+                                <input type="submit" name="submit" class="btn btn-success" value="Add">
                             </div>
                         </form>
                     </div>
