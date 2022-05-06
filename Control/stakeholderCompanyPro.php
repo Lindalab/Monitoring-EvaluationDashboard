@@ -1,16 +1,18 @@
 <?php
 require "../Model/dbconnect.php";
 require " ../Model/sqlfunctions.php";
+require "..\Model\stakeholders.php";
 
 
 
 if(isset($_POST["submit"])){
-    $company_name= $_POST[""];
-    $contact=$_POST[""];
-    $email=$_POST[""];
-    $address=$_POST[""];
+    $company_name= $_POST["cname"];
+    $contact=$_POST["contact"];
+    $email=$_POST["email"];
+    $address=$_POST["address"];
+    
 
-    createStakeholder($contact, $email, $address);
+    
     createCompany($company_name, $contact, $email, $address);
     
 }

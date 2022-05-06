@@ -334,7 +334,7 @@ require ("../Model/coursesFunctions.php");
                 </div>
             </div>
 
-            <!--Put crud here-->
+            <!--Module Table -->
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
@@ -364,7 +364,7 @@ require ("../Model/coursesFunctions.php");
 
                                     <th>Action</th>
 
-                                    <!-- coursename, coursestatus, datestarted, modulename, coursedescription -->
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -388,7 +388,7 @@ require ("../Model/coursesFunctions.php");
                     </div>
                 </div>
             </div>
-            <!-- Edit Modal HTML -->
+            <!-- Add Modal HTML -->
             <div id="addEmployee" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -488,16 +488,7 @@ require ("../Model/coursesFunctions.php");
     </section>
 
     <script>
-        /* let sidebar = document.querySelector(".sidebar");
-                                                        let sidebarBtn = document.querySelector(".sidebarBtn");
-                                                        sidebarBtn.onclick = function() {
-                                                            sidebar.classList.toggle("active");
-                                                            if (sidebar.classList.contains("active")) {
-                                                                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                                                            } else
-                                                                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                                                        } */
-
+        
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {
@@ -532,6 +523,4 @@ require ("../Model/coursesFunctions.php");
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="../js/spur.js"></script>
 </body>
-</body>
-
 </html>

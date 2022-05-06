@@ -102,7 +102,7 @@
             </div>
 
             <input type="file" id="upload" hidden/>
-            <label for="upload">Choose file</label>
+            <label for="upload">Upload Users</label>
 
         </nav>
 
@@ -188,10 +188,7 @@
                                     <input type="text" style="width:250px;" class="form-control" id="myInput" onkeyup="_filter()" placeholder="Search for users ... " title="Type in a sponsor type">
 
                                 </div>
-                                <!-- <div class="col-sm-6">
-                                    <a href="#addEmployeeModal" class="btn btn-success" style="background-color: white; color:rgb(124, 15, 15)" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New User</span></a>
-                                    <input type="file" id="myFile" name="filename" class="btn btn-success" style="background-color: white; color:rgb(124, 15, 15); width:210px;">
-                                </div> -->
+                                
                             </div>
                         </div>
                         <table class="table table-striped table-hover">
@@ -236,11 +233,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Edit Modal HTML -->
+            <!-- Add Individual -->
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\stakeholderIndivProcessing.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add User</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -248,41 +245,52 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>First name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="fname" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Last name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="lname" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Address</label>
+                                    <input type="text" class="form-control" name="address" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="contact" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Gender</label><br>
+                                    <label for="Male">Male</label><br>
+                                    <input type="radio" id="Male" class="form-control" name="gender" value="Male" >
+                                    <label for="Female">Female</label><br>
+                                    <input type="radio" id="Female" class="form-control" name="gender" Value="Female" >
                                 </div>
                                 <div class="form-group">
                                     <p>Role</p>
 
-                                    <input type="radio" id="html" name="fav_language" value="HTML">
-                                    <label for="html">Student</label><br>
-                                    <input type="radio" id="css" name="fav_language" value="CSS">
-                                    <label for="css">Coach</label><br>
-                                    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-                                    <label for="javascript">Sponser</label>
+                                    <select name="role_id" class = "form-control" required>
+                                         <?php
+                                            displaySelectRoles();
+                                         ?>
+                                    </select>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btnAdd btn-success" value="Add">
+                                <input type="submit" class="btnAdd btn-success" name="submit" value="Add">
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Edit Modal HTML -->
+            <!-- edith Individual -->
             <div id="editEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -329,7 +337,7 @@
                 </div>
             </div>
 
-            <!-- Delete Modal HTML -->
+            <!-- Delete Individual HTML -->
             <div id="deleteEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -355,12 +363,10 @@
                 </div>
             </div>
 
-            <!-- <div class="button">
-                <a href="#">See All</a>
-            </div> -->
+           
 
 
-            <!--Put crud here-->
+            <!--Company Table-->
             <div class="container-xl">
                 <div class="table-responsive">
                     <div class="table-wrapper">
@@ -386,26 +392,15 @@
                                     </th>
                                     <th>Company Name</th>
                                     <th>Contact</th>
-                                    <th>Email Address</th>
+                                    <th>Email </th>
+                                    <th>Address</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Bank Of America</td>
-                                    <td>(171) 555-2222</td>
-                                    <td>info@bankofAmerica</td>
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmploye" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
+                                <?php
+                                displaytablesCompanies();
+                                ?>
 
                             </tbody>
                         </table>
@@ -424,11 +419,11 @@
                     </div>
                 </div>
             </div>
-            <!-- Edit Modal HTML -->
+            <!-- Add to company -->
             <div id="addEmployee" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form method="post" action="..\Control\stakeholderCompanyPro.php">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Company</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -436,21 +431,26 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Company name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="cname"required>
                                 </div>
                                 <div class="form-group">
                                     <label>Contact</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="contact" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email Address</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label> Address</label>
+                                    <input type="text" class="form-control" name="address" required>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btnAdd btn-success" value="Add">
+                                <input type="submit" class="btnAdd btn-success" name="submit" value="Add">
                             </div>
                         </form>
                     </div>

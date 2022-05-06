@@ -1,20 +1,22 @@
 <?php
 require "../Model/dbconnect.php";
 require " ../Model/sqlfunctions.php";
+require "..\Model\stakeholders.php";
 
 
 
 if(isset($_POST["submit"])){
-    $fname= $_POST[""];
-    $lname = $_POST[""];
-    $gender = $_POST[""];
-    $role_id=$_POST[""];
-    $contact=$_POST[""];
-    $email=$_POST[""];
-    $address=$_POST[""];
+    $fname= $_POST["fname"];
+    $lname = $_POST["lname"];
+    $gender = $_POST["gender"];
+    $role_id=$_POST["role_id"];
+    $contact=$_POST["contact"];
+    $email=$_POST["email"];
+    $address=$_POST["address"];
 
-    createStakeholder($contact, $email, $address);
+    
     createIndividual($fname, $lname, $gender, $role_id, $contact, $email, $address);
+    header("location: ..\View\Stakeholder.php");
     
 }
 ?>

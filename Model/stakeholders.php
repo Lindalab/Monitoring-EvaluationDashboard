@@ -1,6 +1,11 @@
 <?php
     require "sqlfunctions.php";
 
+    function roles(){
+        $query="SELECT role_id,role_name from roles";
+        return select($query);
+    }
+
     function createStakeholder($contact, $email, $address){
 
         $query = "INSERT INTO `stakeholders`( `contact`, `email`, `address`) VALUES ('$contact','$email','$address')";
@@ -50,7 +55,7 @@
 
     function viewAllCompanies(){
         $query = "SELECT stakeholders.stakeholderid ,companies.company_name,stakeholders.contact,stakeholders.email,stakeholders.address from stakeholders,companies where stakeholders.stakeholderid=companies.stakeholderid";
-        return select(query);
+        return select($query);
     }
 
     function viewAllStudents(){
@@ -142,6 +147,60 @@
        
     }
 
+
+// role_id,role_name
+    function displaySelectRoles(){
+        $result = roles();
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $role_id = $row['role_id'];
+                $role_name = $row['role_name'];
+    
+                echo "<option value='$role_id'>$role_name</option>";
+            }
+        }
+    }
+
+
+    
+    function displaytablesCompanies(){
+        
+
+
+        $result = viewAllCompanies();
+         
+        if($result->num_rows > 0){
+            while($row = mysqli_fetch_assoc($result)){
+                $id = $row['stakeholderid'];
+                $company_name = $row['company_name'];
+                $contact = $row['contact'];
+                $email = $row['email'];
+                $address = $row['address'];
+               
+
+                echo "<tr> <td>
+        <span class='custom-checkbox'>
+            <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
+            <label for='checkbox1'></label>
+        </span>
+    </td>
+    
+    <td>$company_name</td>
+    <td>$contact</td>
+    <td>$email</td>
+    <td>$address</td>
+    
+    <td>
+        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+
+        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+    </td>
+</tr>";
+            }
+        }
+
+       
+    }
 
     
 
