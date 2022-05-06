@@ -1,7 +1,6 @@
 <?php
 
 
-require_once ("stakeholders.php");
-
-     echo totalUser();
+require_once "..\Model\grantFunctions.php";
+echo displayTotalGrantsRecieved();
 ?>
