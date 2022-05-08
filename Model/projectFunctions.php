@@ -1,6 +1,6 @@
 <?php
 
-require "sqlfunctions.php";
+require_once "sqlfunctions.php";
 
 function projectInfoStatus(){
     $query="Select  Project.Project_name,Individuals.fname, Individuals.lname ,Stakeholders.contact,
@@ -148,6 +148,12 @@ function totalProject(){
 
    function inoperationProjects(){
     $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='in-operation'";
+    return totalAll($query,"number");
+
+   }
+
+   function dlabProject(){
+    $query="SELECT DISTINCT count(Projectid) as number from project, department where department.depart_id= project.department_id and department.depart_name='Design Lab'";
     return totalAll($query,"number");
 
    }

@@ -1,7 +1,7 @@
 <?php
 
 
-require ("sqlfunctions.php");
+require_once ("sqlfunctions.php");
 
 // check number of times various events has happen
 function eventOccurrance(){

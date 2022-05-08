@@ -1,5 +1,5 @@
 <?php
-require ("sqlfunctions.php");
+require_once ("sqlfunctions.php");
 
 // delete update
 

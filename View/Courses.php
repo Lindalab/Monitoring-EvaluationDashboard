@@ -77,7 +77,7 @@ require ("../Model/coursesFunctions.php");
             </li>
 
             <li class="log_out">
-                <a href="#">
+                <a href="/MonitoringEvaluationDashboard/View/Clientside/php/Adminpage.php">
                     <i class='bx bx-log-out'></i>
                     <span class="links_name">Log out</span>
                 </a>
@@ -252,10 +252,13 @@ require ("../Model/coursesFunctions.php");
                                     <input type="text" class="form-control" name="cname" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="active">Active</label>
-                                    <input type="radio" id="active" class="form-control" name="cstatus" value="Active" required>
-                                    <label for="Inactive">Inactive </label>
-                                    <input type="radio" id="Inactive" class="form-control" name="cstatus" value="Inactive" required>
+                                    <label >Status</label>
+                                    <select name="cstatus" id="cars">
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
+                                        
+                                </select>
+                                    
                                 </div>
                                 <div class="form-group">
                                     <label>date started</label>

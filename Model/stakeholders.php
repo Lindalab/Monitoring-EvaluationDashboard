@@ -1,5 +1,5 @@
 <?php
-    require "sqlfunctions.php";
+    require_once "sqlfunctions.php";
 
     function roles(){
         $query="SELECT role_id,role_name from roles";
