@@ -219,7 +219,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart" id = "mygraph">
+                                    <div class="card-body spur-card-body-chart" style = "width: 800px; height: 400px; margin: 0 auto" id="id">
                                         <canvas id="spurChartjsTwoBars"></canvas>
                                         <script language = "JavaScript">
          function drawChart() {
@@ -237,11 +237,12 @@ $result = mutiplyBarChartsForEventTypeAttendence();
             var options = {title: 'Event And Student Populations'};  
 
             // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('mygraph'));
+            var chart = new google.visualization.ColumnChart(document.getElementById('id'));
             chart.draw(data, options);
          }
          google.charts.setOnLoadCallback(drawChart);
       </script>
+
                                     </div>
                                 </div>
                             </div>
