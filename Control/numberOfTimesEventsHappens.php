@@ -1,6 +1,6 @@
 <?php
   require ("../Model/eventsFunctions.php");
-  $result = numberOfTimesEventsHappens();
+  $resultTimeEvent = numberOfTimesEventsHappens();
   
   
 ?>
@@ -24,7 +24,7 @@
             var data = google.visualization.arrayToDataTable([
                ['Event Type', 'Number of times organised'],
                <?php
-                while($row = mysqli_fetch_array($result)){
+                while($row = mysqli_fetch_array($resultTimeEvent)){
                   echo "['".$row['EventType']."',".$row['number_of_Occurance']."],";
                 }
 

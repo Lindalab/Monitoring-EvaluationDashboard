@@ -1,3 +1,8 @@
+><?php
+require ("../../../Model/stakeholders.php");
+require ("../../../Model/projectFunctions.php");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -74,13 +79,17 @@
                     <div class="row dash-row">
                         <div class="col-xl-4">
                             <div class="stats stats-primary" style="background-color:rgb(75, 72, 72);">
-                                <h3 class="stats-title"> Total number of workshop leaders & coaches recruited </h3>
+                                <h3 class="stats-title"> Total Coaches recruited </h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">114</div>
+                                        <div class="stats-number">
+                                            <?php
+                                           echo  totalCoaches();
+                                            ?>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -138,7 +147,11 @@
                                         <i class="fas fa-school"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number">
+                                            <?php
+                                            echo numCommunitiesEngaged();
+                                            ?>
+                                        </div>
 
                                     </div>
                                 </div>

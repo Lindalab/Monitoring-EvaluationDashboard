@@ -5,6 +5,9 @@ require ("../../../Model/stakeholders.php");
 require ("../../../Model/coursesFunctions.php");
 require ("../../../Model/eventsFunctions.php");
 $result = mutiplyBarChartsForEventTypeAttendence();
+$resultTimeEvent = numberOfTimesEventsHappens();
+$resultAttend = numberofStakeholderAttendingAnEventType();
+$resultAttendByGender = eventsAttendByAParticularIndividualsGender();  
 
 
 
@@ -22,10 +25,15 @@ $result = mutiplyBarChartsForEventTypeAttendence();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="../js/chart-js-config.js"></script>
     <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+        
       </script>
+      
       <script type = "text/javascript">
-         google.charts.load('current', {packages: ['corechart']});     
+         google.charts.load('current', {packages: ['corechart']});   
+         google.charts.load('current', {'packages':['corechart']});   
       </script>
+
+    
     <title>Ashesi Entrepreneurial Center</title>
 </head>
 
@@ -95,7 +103,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                     <div class="stats-data">
                                         <div class="stats-number">
                                             <?php
-                                            dlabProject();
+                                            echo dlabProject();
                                             ?>
                                         </div>
 
@@ -113,7 +121,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                     <div class="stats-data">
                                         <div class="stats-number" style="color: black;">
                                         <?php
-                                        totalStudent();
+                                       echo  totalStudent();
                                         ?>
                                     </div>
 
@@ -132,7 +140,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                     <div class="stats-data">
                                         <div class="stats-number">
                                             <?php
-                                            studentOrganisedEvents();
+                                            echo studentOrganisedEventL();
                                             ?>
                                         </div>
 
@@ -165,7 +173,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                     <div class="stats-data">
                                         <div class="stats-number">
                                             <?php
-                                             totalCourses();
+                                            echo  totalCourses();
                                             ?>
                                         </div>
                                     </div>
@@ -184,7 +192,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                     <div class="stats-data">
                                         <div class="stats-number">
                                             <?php
-                                            totalModules();
+                                            echo totalModules();
                                             ?>
                                         </div>
                                     </div>
@@ -219,7 +227,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart" style = "width: 800px; height: 400px; margin: 0 auto" id="id">
+                                    <div class="card-body spur-card-body-chart" style = "width: 900px; height: 600px;" id="id">
                                         <canvas id="spurChartjsTwoBars"></canvas>
                                         <script language = "JavaScript">
          function drawChart() {
@@ -252,7 +260,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                         <div class="spur-card-icon">
                                             <i class="fas fa-chart-bar"></i>
                                         </div>
-                                        <div class="spur-card-title"> Student organized activities </div>
+                                        <div class="spur-card-title"> Event Occurance </div>
                                         <div class="spur-card-menu">
                                             <div class="dropdown show">
                                                 <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -265,35 +273,31 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart">
+                                    <div class="card-body spur-card-body-chart" id="idA" style=" height:600px; width:900px">
                                         <canvas id="spurChartjsBar"></canvas>
-                                        <script>
-                                            var ctx = document.getElementById("spurChartjsBar").getContext('2d');
-                                            var myChart = new Chart(ctx, {
-                                                type: 'bar',
-                                                data: {
-                                                    labels: [" sessions", "hackathon", "entrepreneurial"],
-                                                    datasets: [{
-                                                        label: 'Blue',
-                                                        data: [12, 19, 3],
-                                                        backgroundColor: '#ffb3b3',
-                                                        borderColor: 'transparent'
-                                                    }]
-                                                },
-                                                options: {
-                                                    legend: {
-                                                        display: false
-                                                    },
-                                                    scales: {
-                                                        yAxes: [{
-                                                            ticks: {
-                                                                beginAtZero: true
-                                                            }
-                                                        }]
-                                                    }
-                                                }
-                                            });
-                                        </script>
+                                        <script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+            var data = google.visualization.arrayToDataTable([
+               ['Event Type', 'Number of times organised'],
+               <?php
+                while($row = mysqli_fetch_array($resultTimeEvent)){
+                  echo "['".$row['EventType']."',".$row['number_of_Occurance']."],";
+                }
+
+               ?>
+               
+
+            ]);
+
+            var options = {title: 'Population (in millions)'}; 
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('idA'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +307,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                         <div class="spur-card-icon">
                                             <i class="fas fa-chart-bar"></i>
                                         </div>
-                                        <div class="spur-card-title">Information session attendance by gender </div>
+                                        <div class="spur-card-title">Event Number of attendances </div>
                                         <div class="spur-card-menu">
                                             <div class="dropdown show">
                                                 <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -316,35 +320,31 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart">
+                                    <div class="card-body spur-card-body-chart" id="IdB" style="width: 900px; height: 300px;">
                                         <canvas id="spurChartjsLine"></canvas>
-                                        <script>
-                                            var ctx = document.getElementById("spurChartjsLine").getContext('2d');
-                                            var myChart = new Chart(ctx, {
-                                                type: 'line',
-                                                data: {
-                                                    labels: ["2018", "2019", "2020", "2021", "2022"],
-                                                    datasets: [{
-                                                        label: 'Males',
-                                                        data: [12, 19, 3, 5, 2],
-                                                        backgroundColor: '#800000',
-                                                        borderColor: '#800000',
-                                                        fill: false
-                                                    }, {
-                                                        label: 'Females',
-                                                        data: [4, 12, 11, 2, 14],
-                                                        backgroundColor: window.chartColors.danger,
-                                                        borderColor: window.chartColors.danger,
-                                                        fill: false
-                                                    }]
-                                                },
-                                                options: {
-                                                    legend: {
-                                                        display: false
-                                                    }
-                                                }
-                                            });
-                                        </script>
+                                        <script language = "JavaScript">  
+                 function drawChart()  
+            {  
+                 var data = google.visualization.arrayToDataTable([  
+                           ['Event Type', 'Number'],  
+                           <?php  
+                          
+                          while($row = mysqli_fetch_array($resultAttend))  
+                           {  
+                                echo "['".$row["event_type"]."', ".$row["number"]."],";  
+                           }  
+                           ?>  
+                      ]);  
+                 var options = {  
+                        
+                       is3D:true,  
+                       pieHole: 0.4  
+                      };  
+                 var chart = new google.visualization.PieChart(document.getElementById('IdB'));  
+                 chart.draw(data, options);  
+            }  
+            google.charts.setOnLoadCallback(drawChart);
+            </script>  
                                     </div>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                         <div class="spur-card-icon">
                                             <i class="fas fa-chart-bar"></i>
                                         </div>
-                                        <div class="spur-card-title"> pie chart showing the status of a business model </div>
+                                        <div class="spur-card-title"> Event Attendence by Gender </div>
                                         <div class="spur-card-menu">
                                             <div class="dropdown show">
                                                 <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -367,35 +367,36 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart">
+                                    <div class="card-body spur-card-body-chart" id="nice1" style="width: 900px; height: 300px;">
                                         <canvas id="spurChartjsDougnut"></canvas>
-                                        <script>
-                                            var ctx = document.getElementById("spurChartjsDougnut").getContext('2d');
-                                            var myChart = new Chart(ctx, {
-                                                type: 'doughnut',
-                                                data: {
-                                                    labels: ["validated", "Tested", "not tested", "not validated"],
-                                                    datasets: [{
-                                                        label: 'Week',
-                                                        data: [12, 19, 3, 5],
-                                                        backgroundColor: [
-                                                            '#800000',
-                                                            '#ffb3b3',
-                                                            '#cc0000',
-                                                            '#ff1a1a',
-                                                            window.chartColors.danger,
-                                                        ],
-                                                        borderColor: '#fff',
-                                                        fill: false
-                                                    }]
-                                                },
-                                                options: {
-                                                    legend: {
-                                                        display: false
-                                                    }
-                                                }
-                                            });
-                                        </script>
+                                        
+                                        <script language = "JavaScript"> 
+           
+           
+           function drawChart()  
+           {  
+                var data = google.visualization.arrayToDataTable([  
+                          ['Gender', 'Number'],  
+                          <?php  
+                         
+                         while($row = mysqli_fetch_array($resultAttendByGender))  
+                          {  
+                               echo "['".$row["gender"]."', ".$row["number_of_Attendees"]."],";  
+                          } 
+
+                    
+                          ?>  
+                     ]);  
+                var options = {  
+                      title: 'Percentage of Male and Female Employee',  
+                      is3D:true,  
+                      pieHole: 0.4  
+                     };  
+                var chart = new google.visualization.PieChart(document.getElementById('nice1'));  
+                chart.draw(data, options);  
+           } 
+           google.charts.setOnLoadCallback(drawChart);   
+           </script>   
                                     </div>
                                 </div>
                             </div>

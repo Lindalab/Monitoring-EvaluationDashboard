@@ -1,10 +1,8 @@
 <?php
 
 
-require_once "..\Model\createNewEntities.php";
+require_once "..\Model\stakeholders.php";
 // echo displayTotalGrantsRecieved();
-$result=departmentshows();
-if($result->num_rows > 0){
-    echo "yes";
-}
+ echo totalCoaches();
 ?>
+

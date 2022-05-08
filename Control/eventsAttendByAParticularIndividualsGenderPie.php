@@ -1,23 +1,32 @@
 <?php  
   
   require ("../Model/eventsFunctions.php");
-  $result = eventsAttendByAParticularIndividualsGender();  
+  $resultAttendByGender = eventsAttendByAParticularIndividualsGender();  
   ?>  
   <!DOCTYPE html>  
   <html>  
        <head>  
             <title>Webslesson Tutorial | Make Simple Pie Chart by Google Chart API with PHP Mysql</title>  
-            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
-            <script type="text/javascript">  
-            google.charts.load('current', {'packages':['corechart']});  
-            google.charts.setOnLoadCallback(drawChart);  
+            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+            <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart']});     
+      </script>  
+           
+       </head>  
+       <body>  
+             
+              
+                 <div id="nice1" style="width: 700px; height: 200px;"></div> 
+                 <script language = "JavaScript"> 
+           
+           
             function drawChart()  
             {  
                  var data = google.visualization.arrayToDataTable([  
                            ['Gender', 'Number'],  
                            <?php  
                           
-                          while($row = mysqli_fetch_array($result))  
+                          while($row = mysqli_fetch_array($resultAttendByGender))  
                            {  
                                 echo "['".$row["gender"]."', ".$row["number_of_Attendees"]."],";  
                            } 
@@ -32,17 +41,11 @@
                        is3D:true,  
                        pieHole: 0.4  
                       };  
-                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
+                 var chart = new google.visualization.PieChart(document.getElementById('nice1'));  
                  chart.draw(data, options);  
-            }  
-            </script>  
-       </head>  
-       <body>  
-             
-            <div style="width:900px;">  
-                 <h3 align="center">Make Simple Pie Chart by Google Chart API with PHP Mysql</h3>  
-                 <br />  
-                 <div id="piechart" style="width: 700px; height: 200px;"></div>  
-            </div>  
+            } 
+            google.charts.setOnLoadCallback(drawChart);   
+            </script>   
+              
        </body>  
   </html>
