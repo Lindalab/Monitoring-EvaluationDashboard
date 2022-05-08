@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 <?php
     require ("../../../Model/projectFunctions.php");
     require ("../../../Model/stakeholders.php");
     require ("../../../Model/coursesFunctions.php");
     require ("../../../Model/eventsFunctions.php");
     require ("../../../Model/grantFunctions.php");
-=======
-><?php
-require ("../../../Model/stakeholders.php");
-require ("../../../Model/projectFunctions.php");
->>>>>>> 5b6f2fdd989fb70b6899c344a41249d654fd621d
+
 ?>
 
 <!doctype html>
@@ -78,7 +73,7 @@ require ("../../../Model/projectFunctions.php");
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" style="background-color:rgb(143, 2, 2); color:white;">
 
-                            <a class="dropdown-item" href="Adminpage.html" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
+                            <a class="dropdown-item" href="Adminpage.php" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
                         </div>
                     </div>
                 </div>

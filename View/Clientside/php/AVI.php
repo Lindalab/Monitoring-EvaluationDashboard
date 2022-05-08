@@ -1,3 +1,19 @@
+<?php
+
+require ("../../../Model/projectFunctions.php");
+require ("../../../Model/stakeholders.php");
+require ("../../../Model/coursesFunctions.php");
+require ("../../../Model/eventsFunctions.php");
+require ("../../../Model/grantFunctions.php");
+
+
+
+
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -10,7 +26,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="../js/chart-js-config.js"></script>
-    <title>Spur - A Bootstrap Admin Template</title>
+    <title>Ashesi Entrepreneurship Center</title>
 </head>
 
 <body>
@@ -56,13 +72,13 @@
                 </form>
                 <div class="tools">
 
-                    <div class="dropdown tools-item">
+                <div class="dropdown tools-item">
                         <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" style="background-color:rgb(143, 2, 2); color:white;">
 
-                            <a class="dropdown-item" href="Adminpage.html" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
+                            <a class="dropdown-item" href="Adminpage.php" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
                         </div>
                     </div>
                 </div>
@@ -369,7 +385,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Number of agencies mapped out for potential funding</td>
-                                                <td><?php ?></td>
+                                                <td><?php echo pontTotal(); ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Number of agencies contact has been made with</td>

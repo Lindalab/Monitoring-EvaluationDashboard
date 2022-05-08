@@ -79,14 +79,13 @@ $resultAttendByGender = eventsAttendByAParticularIndividualsGender();
                     <input type="text" class="searchbox-input" placeholder="type to search">
                 </form>
                 <div class="tools">
-
-                    <div class="dropdown tools-item">
+                <div class="dropdown tools-item">
                         <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" style="background-color:rgb(143, 2, 2); color:white;">
 
-                            <a class="dropdown-item" href="Adminpage.html" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
+                            <a class="dropdown-item" href="Adminpage.php" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
                         </div>
                     </div>
                 </div>

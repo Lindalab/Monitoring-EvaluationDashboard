@@ -184,6 +184,11 @@ function companyPartner(){
   
   return totalAll($sql, "number");
 }
+
+function pontTotal(){
+    $sql="SELECT COUNT(*) as number FROM `potential_sponsors`";
+    return totalAll($sql, "number");
+}
 ?>
 
 

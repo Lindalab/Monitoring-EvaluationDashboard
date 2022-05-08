@@ -4,6 +4,7 @@
     require ("../../../Model/coursesFunctions.php");
     require ("../../../Model/eventsFunctions.php");
     require ("../../../Model/grantFunctions.php");
+    $result = coursesAndNumberOfModules();
 
 ?>
 <!doctype html>
@@ -17,7 +18,17 @@
     <link rel="stylesheet" href="../css/spur.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="../js/chart-js-config.js"></script>
-    <title>Spur - A Bootstrap Admin Template</title>
+
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+        
+      </script>
+      
+      <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart']});   
+         google.charts.load('current', {'packages':['corechart']});   
+      </script>
+
+    <title>Ashesi Entrepreneurship Center</title>
 </head>
 
 <body>
@@ -61,13 +72,13 @@
                     <input type="text" class="searchbox-input" placeholder="type to search">
                 </form>
                 <div class="tools">
-                    <div class="dropdown tools-item">
+                <div class="dropdown tools-item">
                         <a href="#" class="" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" style="background-color:rgb(143, 2, 2); color:white;">
 
-                            <a class="dropdown-item" href="Adminpage.html" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
+                            <a class="dropdown-item" href="Adminpage.php" style="background-color:rgb(143, 2, 2); color:white;">Admin Login </a>
                         </div>
                     </div>
                 </div>
@@ -177,7 +188,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg">
+              <div class="col-lg">
                     <div class="card spur-card">
                         <div class="card-header">
                             <div class="spur-card-icon">
@@ -202,6 +213,47 @@
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="col-lg">
+                    <div class="card spur-card">
+                        <div class="card-header">
+                            <div class="spur-card-icon">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <div class="spur-card-title">Courses and Modules</div>
+                        </div>
+                        <div class="card-body" style="height: 400px; line-height: 3em; overflow:scroll; padding: 5px;" id="Id1" >
+
+                        <script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+            var data = google.visualization.arrayToDataTable([
+               ['Courses', 'Number_of_Modules'],
+        	    <?php
+        	    	while($row = mysqli_fetch_array($result)){
+        	    		echo "['".$row['Courses']."',".$row['Modules']."],";
+        	    	}
+
+        	    ?>
+            ]);
+
+            var options = {title: 'Number of Courses'};  
+
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('Id1'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
+                                    
+                        </div>
+                    </div>
+                </div>
+
+                 
+
 
             </main>
         </div>

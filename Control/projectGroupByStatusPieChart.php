@@ -2,7 +2,7 @@
   
  require "../Model/projectFunctions.php";
 
-     $result = projectGroupByStatus();
+     $resultProject = projectGroupByStatus();
   
  ?>  
  <!DOCTYPE html>  
@@ -11,7 +11,14 @@
            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>  
            <script type="text/javascript">  
            google.charts.load('current', {'packages':['corechart']});  
-           google.charts.setOnLoadCallback(drawChart);  
+           </script>  
+      </head>  
+      <body>  
+            
+             
+                <div id="piechart" style="width: 800px; height: 500px;"></div>  
+                <script language = "JavaScript">  
+                  
            
            function drawChart()  
            {  
@@ -19,7 +26,7 @@
                           ['Project_status', 'number_of_projects'],  
                           <?php  
                          
-                         while($row = mysqli_fetch_array($result))  
+                         while($row = mysqli_fetch_array($resultProject))  
                           {  
                               echo "['".$row["Status"]."', ".$row["number_of_projects"]."],";  
                           }  
@@ -38,12 +45,7 @@
                 var chart = new google.visualization.PieChart(document.getElementById('piechart'));  
                 chart.draw(data, options);  
            }  
-           </script>  
-      </head>  
-      <body>  
-            
-           <div style="width:900px;">   
-                <div id="piechart" style="width: 800px; height: 500px;"></div>  
-           </div>  
+           google.charts.setOnLoadCallback(drawChart); 
+            </script>    
       </body>  
  </html>

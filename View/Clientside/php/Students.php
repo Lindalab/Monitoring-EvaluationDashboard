@@ -4,6 +4,9 @@
     require ("../../../Model/coursesFunctions.php");
     require ("../../../Model/eventsFunctions.php");
     require ("../../../Model/grantFunctions.php");
+    
+  $result = departmentTotalGrant();  
+  $resultProject = projectGroupByStatus();
 ?>
 
 <!doctype html>
@@ -17,6 +20,14 @@
     <link rel="stylesheet" href="../css/spur.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="../js/chart-js-config.js"></script>
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+        
+      </script>
+      
+      <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart']});   
+         google.charts.load('current', {'packages':['corechart']});   
+      </script>
     <title>Spur - A Bootstrap Admin Template</title>
 </head>
 
@@ -125,7 +136,7 @@
                                     <div class="spur-card-icon">
                                         <i class="fas fa-chart-bar"></i>
                                     </div>
-                                    <div class="spur-card-title" style="background-color:rgb(238, 248, 248);"> Student Participation Bar Chart </div>
+                                    <div class="spur-card-title" style="background-color:rgb(238, 248, 248);"> Department and Grants </div>
                                     <div class="spur-card-menu">
                                         <div class="dropdown show">
                                             <a class="spur-card-menu-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -138,35 +149,36 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-body spur-card-body-chart">
+                                <div class="card-body spur-card-body-chart" style="width: 900px; height: 500px;"  id="Not" >
                                     <canvas id="spurChartjsBar"></canvas>
-                                    <script>
-                                        var ctx = document.getElementById("spurChartjsBar").getContext('2d');
-                                        var myChart = new Chart(ctx, {
-                                            type: 'bar',
-                                            data: {
-                                                labels: ["Career Fair", "Pitches", "Hackaton", "Award Winners", "FDE"],
-                                                datasets: [{
-                                                    label: 'red',
-                                                    data: [12, 19, 3, 5, 2],
-                                                    backgroundColor: window.chartColors.danger,
-                                                    borderColor: 'transparent'
-                                                }]
-                                            },
-                                            options: {
-                                                legend: {
-                                                    display: false
-                                                },
-                                                scales: {
-                                                    yAxes: [{
-                                                        ticks: {
-                                                            beginAtZero: true
-                                                        }
-                                                    }]
-                                                }
-                                            }
-                                        });
-                                    </script>
+                                   
+                                    <script language = "JavaScript">
+           
+           function drawChart()  
+           {  
+                var data = google.visualization.arrayToDataTable([  
+                          ['Department', 'Total Grant'],  
+                          <?php  
+                         
+                         while($row = mysqli_fetch_array($result))  
+                          {  
+                               echo "['".$row["Department"]."', ".$row["total_grant"]."],";  
+                          }  
+                          ?>  
+                     ]);  
+                var options = {  
+                      title: 'Percentage of Male and Female Employee',  
+                      is3D:true,  
+                      pieHole: 0.4  
+                     };  
+                var chart = new google.visualization.PieChart(document.getElementById('Not'));  
+                chart.draw(data, options);  
+           } 
+           google.charts.setOnLoadCallback(drawChart); 
+        
+     </script> 
+
+
                                 </div>
                             </div>
                         </div>
@@ -178,8 +190,38 @@
                                     </div>
                                     <div class="spur-card-title">Pie Chart </div>
                                 </div>
-                                <div class="card-body" style="height: 260px;">
-
+                                <div class="card-body" style="height: 500px;" id="Able">
+                                <canvas id="spurChartjsBar"></canvas>
+                                <script language = "JavaScript">  
+                  
+           
+                  function drawChart()  
+                  {  
+                       var data = google.visualization.arrayToDataTable([  
+                                 ['Project_status', 'number_of_projects'],  
+                                 <?php  
+                                
+                                while($row = mysqli_fetch_array($resultProject))  
+                                 {  
+                                     echo "['".$row["Status"]."', ".$row["number_of_projects"]."],";  
+                                 }  
+                                 ?>  
+                            ]);  
+                       var options = {  
+                             title: 'Projects and their status',  
+                             is3D:true,  
+                             // pieHole: 0.4,
+                               slices: {  0: {offset: 0.1},
+                           // 1: {offset: 0.2},
+                           // 2: {offset: 0.1},
+                           // 15: {offset: 0.5},
+                 }, 
+                            };  
+                       var chart = new google.visualization.PieChart(document.getElementById('Able'));  
+                       chart.draw(data, options);  
+                  }  
+                  google.charts.setOnLoadCallback(drawChart); 
+                   </script>   
                                 </div>
                             </div>
                         </div>
