@@ -5,14 +5,14 @@ require " ../Model/sqlfunctions.php";
 
 
 if(isset($_POST["submit"])){
-    $department_id= $_POST[""];
-    $projectName = $_POST[""];
-    $projectDescription=$_POST[""];
-    $communicationType = $_POST[""];
-    $projectStatus=$_POST[""];
-    $projectIndustry=$_POST[""];
-    $projectLocation=$_POST[""];
-    $projectType=$_POST[""];
+    $department_id= $_POST["depart_id"];
+    $projectName = $_POST["prname"];
+    $projectDescription=$_POST["prdescription"];
+    $communicationType = $_POST["Communicationtype"];
+    $projectStatus=$_POST["Project_status"];
+    $projectIndustry=$_POST["Project_industry"];
+    $projectLocation=$_POST["Project_location"];
+    $projectType=$_POST["prtype"];
     
 
     insertIntoProject($department_id, $projectName,$ProjectDescription,$communicationType,

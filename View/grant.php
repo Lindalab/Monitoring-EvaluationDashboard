@@ -23,7 +23,7 @@
     <div class="sidebar">
         <div class="logo-details">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">Team Move</span>
+            <span class="logo_name">AEC</span>
         </div>
         <ul class="nav-links">
             <li>
@@ -97,17 +97,7 @@
 
         <div class="home-content">
             <div class="overview-boxes">
-                <!--  <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic"> grants received </div>
-                        <div class="number">40,876</div>
-                        <div class="indicator">
-                            <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
-                        </div>
-                    </div>
-                    <i class='bx bx-cart-alt cart'></i>
-                </div> -->
+                
                 <div class="box">
                     <div class="right-side">
                         <div class="box-topic" style="color: #634242">Total Grants received</div>
@@ -120,23 +110,12 @@
                             <span class="text">Up from yesterday</span>
                         </div>
                     </div>
-                    <!-- <h1 style="text-align: right; width: 50px; margin-top:5px; color:brown;"><i class="bi bi-cash-stack"></i></h1> -->
-                    <!-- <i class='bx bx-cart-alt cart'></i> -->
+                    
 
                     <a href="#"><i class="fas fa-donate fa-5x" style="color:#ffb3b3"></i></a>
                 </div>
 
-                <!-- <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Medium Received</div>
-                        <div class="number">$12,876</div>
-                        <div class="indicator">
-                            <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
-                        </div>
-                    </div>
-                    <i class='bx bx-cart cart three'></i>
-                </div> -->
+               
                 <div class="box">
                     <div class="right-side">
                         <div class="box-topic" style="color: #c00000">Project Grant</div>
@@ -150,17 +129,7 @@
 
                     <a href="#"><i class="fas fa-handshake-o fa-5x" style="color:rgb(101, 7, 7)"></i></a>
                 </div>
-                <!-- <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Total Sponser</div>
-                        <div class="number">11,086</div>
-                        <div class="indicator">
-                            <i class='bx bx-down-arrow-alt down'></i>
-                            <span class="text">Down From Today</span>
-                        </div>
-                    </div>
-                    <i class='bx bxs-cart-download cart four'></i>
-                </div> -->
+               
                 <div class="box">
                     <div class="right-side">
                         <div class="box-topic" style="color:rgb(84, 20, 20)">Projects Under Grant</div>
@@ -170,8 +139,7 @@
                             <span class="text">Up from yesterday</span>
                         </div>
                     </div>
-                    <!-- <h1 style="text-align: right; width: 50px; margin-top:5px; color:brown;"><i class="bi bi-cash-stack"></i></h1> -->
-                    <!-- <i class='bx bx-cart-alt cart'></i> -->
+                   
 
                     <a href="#"><i class="fas fa-users fa-5x " style="color:#cc0000"></i></a>
                 </div>
@@ -350,15 +318,8 @@
     </section>
 
     <script>
-        /*  let sidebar = document.querySelector(".sidebar");
-                                                        let sidebarBtn = document.querySelector(".sidebarBtn");
-                                                        sidebarBtn.onclick = function() {
-                                                            sidebar.classList.toggle("active");
-                                                            if (sidebar.classList.contains("active")) {
-                                                                sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-                                                            } else
-                                                                sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-                                                        } */
+      
+      
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function() {

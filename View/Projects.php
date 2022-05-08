@@ -1,5 +1,6 @@
 <?php
 require "..\Model\projectFunctions.php";
+require "..\Model\createNewEntities.php";
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ require "..\Model\projectFunctions.php";
     <div class="sidebar">
         <div class="logo-details">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">Team Move</span>
+            <span class="logo_name">AEC</span>
         </div>
         <ul class="nav-links">
             <li>
@@ -239,49 +240,81 @@ require "..\Model\projectFunctions.php";
                 </div>
             </div>
 
-            <!-- Edit Modal HTML for first table -->
+            <!-- ADD TO PROJECT -->
+            
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\projectProcessing.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Project</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
+                                    
+                                    <p>Department Name</p>
+
+                                    <select name="depart_id" class = "form-control" required>
+                                         <?php
+                                            displaySelectDepartment();
+                                         ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label>Project Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Owner Firstname</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Owner Lastname</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Contact Details</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="prname" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Project Description</label>
-                                    <textarea class="form-control" id="w3review" name="w3review" rows="4" cols="50"></textarea>
+                                    <textarea class="form-control" id="w3review" name="prdescription" rows="4" cols="50"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                <label>Communication Type</label><br>
+                                <select name="Communicationtype" id="cars">
+                                        <option value="Whatsapp">Male</option>
+                                        <option value="phonecall">Female</option>
+                                        <option value="others">Female</option>
+                                </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Project_status</label>
+                                    <select name="Project_status" id="cars">
+                                        <option value="Training">Training</option>
+                                        <option value="Prototyping">Prototyping</option>
+                                        <option value="testing">Testing</option>
+                                        <option value="in-opertion">In-opertion</option>
+                                </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Project Industry</label>
+                                    <input type="text" class="form-control" name="Project_industry" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Project Location</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name="Project_location" required>
                                 </div>
+                                <div class="form-group">
+                                    <label>Project Type</label>
+                                    <select name="prtype" id="cars">
+                                        <option value="Business enterprise">Business enterprise</option>
+                                        <option value="Social projectg">Social project</option>
+                                        <option value="Others">Others</option>
+                                    
+                                </select>
+                                </div>
+                                
+
+
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" value="Add" style="color: white; background-color: rgb(124, 15, 15)">
+                                <input type="submit" class="btn btn-success" name="submit" value="Add" style="color: white; background-color: rgb(124, 15, 15)">
                             </div>
                         </form>
                     </div>

@@ -31,8 +31,8 @@
 
 <body>
     <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bxl-c-plus-plus'></i>
+    <div class="logo-details">
+            <i class='bx bxl-c-plus-plus' ></i>
             <span class="logo_name" >AEC</span>
         </div>
         <ul class="nav-links">
@@ -266,10 +266,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Gender</label><br>
-                                    <label for="Male">Male</label><br>
-                                    <input type="radio" id="Male" class="form-control" name="gender" value="Male" >
-                                    <label for="Female">Female</label><br>
-                                    <input type="radio" id="Female" class="form-control" name="gender" Value="Female" >
+    
+                                    <select name="gender" id="cars">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="other">Female</option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <p>Role</p>

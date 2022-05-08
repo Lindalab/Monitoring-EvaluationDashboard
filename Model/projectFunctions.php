@@ -135,7 +135,7 @@ function totalProject(){
    }
 
    function testedProjects(){
-       $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='testing/tested'";
+       $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='testing'";
        return totalAll($query,"number");
 
    }
@@ -245,6 +245,8 @@ function displayProjectSDG(){
 
     
 }
+
+
 
 
 

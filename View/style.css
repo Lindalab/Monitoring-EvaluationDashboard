@@ -134,13 +134,15 @@ table.table td .add {
     font-weight: 500;
     color: #fff;
     min-width: 60px;
-    text-align: center
+    text-align: center;
 }
 
 .sidebar .logo-details .logo_name {
     color: #fff;
     font-size: 24px;
     font-weight: 500;
+    /* width: 100%;
+    text-align: center; */
 }
 
 .sidebar .nav-links {

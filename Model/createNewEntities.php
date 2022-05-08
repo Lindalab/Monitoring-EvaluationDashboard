@@ -1,6 +1,12 @@
 <?php
 
-require "sqlfunctions.php";
+require_once "sqlfunctions.php";
+
+function departmentshows(){
+    $query="SELECT depart_id, depart_name from department";
+    return select($query);
+}
+
 function createNewDepartment($dapartmentname){
     $query="INSERT INTO `department`(`depart_name`) VALUES ('$dapartmentname')";
     return insert($query);
@@ -66,6 +72,23 @@ function displayDeptProj(){
             }
         }
 
+}
+
+
+
+
+
+
+function displaySelectDepartment(){
+    $result = departmentshows();
+    if($result->num_rows > 0){
+        while($row = mysqli_fetch_assoc($result)){
+            $depart_id = $row['depart_id'];
+            $depart_name = $row['depart_name'];
+
+            echo "<option value='$depart_id'>$depart_name</option>";
+        }
+    }
 }
 
 ?>

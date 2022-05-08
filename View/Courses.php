@@ -28,7 +28,7 @@ require ("../Model/coursesFunctions.php");
     <div class="sidebar">
         <div class="logo-details">
             <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">Team Move</span>
+            <span class="logo_name">AEC</span>
         </div>
         <ul class="nav-links">
             <li>
