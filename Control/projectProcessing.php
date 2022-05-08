@@ -1,6 +1,6 @@
 <?php
 require "../Model/dbconnect.php";
-require " ../Model/sqlfunctions.php";
+require "..\Model\projectFunctions.php";
 
 
 
@@ -15,7 +15,7 @@ if(isset($_POST["submit"])){
     $projectType=$_POST["prtype"];
     
 
-    insertIntoProject($department_id, $projectName,$ProjectDescription,$communicationType,
+    insertIntoProject($department_id, $projectName,$projectDescription,$communicationType,
     $projectStatus, $projectIndustry,$projectLocation,$projectType);
     
 

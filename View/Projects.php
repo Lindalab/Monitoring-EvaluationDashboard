@@ -274,9 +274,9 @@ require "..\Model\createNewEntities.php";
                                 <div class="form-group">
                                 <label>Communication Type</label><br>
                                 <select name="Communicationtype" id="cars">
-                                        <option value="Whatsapp">Male</option>
-                                        <option value="phonecall">Female</option>
-                                        <option value="others">Female</option>
+                                        <option value="Whatsapp">Whatsapp</option>
+                                        <option value="phonecall">phonecall</option>
+                                        <option value="others">others</option>
                                 </select>
                                 </div>
                                 

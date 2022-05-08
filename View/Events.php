@@ -1,5 +1,6 @@
 <?php
      require ("../Model/eventsFunctions.php");
+     require "..\Model\createNewEntities.php";
 
 
 ?>
@@ -225,45 +226,76 @@
                     </div>
                 </div>
             </div>
-            <!-- Edit Modal HTML -->
+            <!-- Add to Event HTML -->
+
+            <!-- eventid int primary key auto_increment,
+department_id int, 
+event_name  varchar(40), 
+event_start_date datetime, 
+event_end_date datetime,
+event_target_group enum(),
+
+event_description  -->
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\eventProcessing.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Event</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Event name</label>
-                                    <input type="text" class="form-control" required>
+                                    <p>Department Name</p>
+                                    <select name="depart_id" class = "form-control" required>
+                                        <?php
+                                            displaySelectDepartment();
+                                        ?>
+                                    </select>
                                 </div>
+
+                                <div class="form-group">
+                                    <label>Event Name</label>
+                                    <input type="text" class="form-control" name="evname" required>
+                                </div>
+                                
                                 <div class="form-group">
                                     <label>Start date</label>
-                                    <input type="date" class="form-control" required>
+                                    <input type="date" class="form-control" name="evsdate"required>
                                 </div>
                                 <div class="form-group">
                                     <label>End date</label>
-                                    <input type="date" class="form-control" required>
+                                    <input type="date" class="form-control" name="evndate" required>
                                 </div>
+                                
                                 <div class="form-group">
-                                    <label>Number of Atendees</label>
-                                    <input type="text" class="form-control" required>
+                                    <label>Event target group</label>
+                                    <select name="event_target_group" id="cars">
+                                        <option value="Students">Students</option>
+                                        <option value="Alumni">Alumni</option>
+                                        <option value="Clubs">Clubs</option>
+                                        <option value="Other">Other</option>
+                                </select>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label>Event type</label>
-                                    <input type="text" class="form-control" required>
+                                    <select name="event_type" id="cars">
+                                        <option value="Information Session">Information Session</option>
+                                        <option value="Hackathon">Hackathon</option>
+                                        <option value="Competition">Competition</option>
+                                        <option value="Career Fair">Career Fair</option>
+                                </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Event Description</label>
-                                    <input type="text" class="form-control" required>
+                                    <textarea class="form-control" id="w3review" name="evdescription" rows="4" cols="50"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btnAdd btn-success" value="Add">
+                                <input type="submit" class="btnAdd btn-success" name= "submit" value="Add">
                             </div>
                         </form>
                     </div>

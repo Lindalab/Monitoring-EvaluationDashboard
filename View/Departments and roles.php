@@ -210,29 +210,22 @@
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\departmentRoleProcessing.php" method="post">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Department</h4>
+                                <h4 class="modal-title">Add New  Department</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Department Name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name= "depart_name" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Project Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Project Status</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
+                                
 
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btnAdd btn-success" value="Add">
+                                <input type="submit" class="btnAdd btn-success" name="submit" value="Add">
                             </div>
                         </form>
                     </div>
@@ -307,7 +300,7 @@
                                     </h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#addEmployee" class="btn btn-success" style="background-color: white; color:rgb(124, 15, 15)" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add Department Event</span></a>
+                                    <a href="#addEmployee" class="btn btn-success" style="background-color: white; color:rgb(124, 15, 15)" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Role</span></a>
                                     <a href="#deleteEmployee" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>
                                 </div>
                             </div>
@@ -380,32 +373,24 @@
                 </div>
             </div>
             <!-- Edit Modal HTML -->
-            <div id="addEmployee" class="modal fade">
+            <div id="#addEmployee" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form action="..\Control\departmentRoleProcessing.php" method="post">
                             <div class="modal-header">
-                                <h4 class="modal-title">Add Department Event</h4>
+                                <h4 class="modal-title">Add New Role</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Department Name</label>
-                                    <input type="text" class="form-control" required>
+                                    <label>Role Name</label>
+                                    <input type="text" class="form-control" name="rname" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Event Name</label>
-                                    <input type="text" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Event Type</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-
+                                
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btnAdd btn-success" value="Add">
+                                <input type="submit" class="btnAdd btn-success" name= "submitrole" value="Add">
                             </div>
                         </form>
                     </div>
