@@ -154,6 +154,11 @@ function totalhackton(){
     return totalAll($query,"number");
 }
 
+function totalExhibition(){
+    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Exhibition'";
+    return totalAll($query,"number");
+}
+
 function totalInforSession(){
     $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Information Session'";
     return totalAll($query,"number");
@@ -202,6 +207,14 @@ function displayEvents(){
 
     
 }
+
+
+function getStudentsAtInfoSession(){
+    $sql = "SELECT COUNT(students.stakeholderid) as number FROM `events`,students, stakeholder_event WHERE events.event_type = 'Information Session' and students.stakeholderid = stakeholder_event.stakeholderid and events.eventid = stakeholder_event.eventid";
+
+    return totalAll($sql, "number");
+}
+
 
 
 

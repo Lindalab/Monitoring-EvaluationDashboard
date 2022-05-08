@@ -1,3 +1,11 @@
+<?php
+    require ("../../../Model/projectFunctions.php");
+    require ("../../../Model/stakeholders.php");
+    require ("../../../Model/coursesFunctions.php");
+    require ("../../../Model/eventsFunctions.php");
+    require ("../../../Model/grantFunctions.php");
+?>
+
 <!doctype html>
 <html lang="en">
 

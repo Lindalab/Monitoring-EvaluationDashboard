@@ -191,8 +191,27 @@ function displayModules(){
 
 }
 
+function courseCountParticipants(){
+    $sql = "SELECT courses.course_name, COUNT(stakehoder_course.stakeholderid) as number From courses, stakehoder_course WHERE courses.course_id = stakehoder_course.course_id GROUP BY stakehoder_course.course_id";
+    
+    $result = select($sql);
 
+    if($result){
+        if($result->num_rows > 0){
+            $i = 0;
+            while($row = mysqli_fetch_assoc($result)){
+                $name = $row['course_name'];
+                $number = $row['number'];
+                echo "<tr>
+                <th scope='row'>$i</th>
+                <td>$name</td>
+                <td>$number</td>
 
-
+            </tr>";
+            $i++;
+            }
+        }
+    }
+}
 
 ?>

@@ -89,6 +89,11 @@
         return totalAll($query, "Engineers");
     }
 
+    function totalCSstudents(){
+        $query="SELECT DISTINCT count(students.stakeholderid) as cs from students where students.major='Computer Science'";
+        return totalAll($query, "cs");
+
+    }
     function totalUser(){
         $query="select DISTINCT count(stakeholders.stakeholderid) as 'Total Users' from stakeholders";
     
@@ -191,9 +196,12 @@
     <td>$address</td>
     
     <td>
-        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
-
-        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+                
+        <form action = '/MonitoringEvaluationDashboard/Control/stakeholderIndivProcessing.php' method = 'POST'>
+            <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+            <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+            <button> </button>
+        </form>
     </td>
 </tr>";
             }

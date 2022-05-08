@@ -4,6 +4,7 @@ require ("../../../Model/projectFunctions.php");
 require ("../../../Model/stakeholders.php");
 require ("../../../Model/coursesFunctions.php");
 require ("../../../Model/eventsFunctions.php");
+require ("../../../Model/grantFunctions.php");
 $result = mutiplyBarChartsForEventTypeAttendence();
 
 
@@ -424,59 +425,62 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                                 <tr>
                                                     <th scope="row">1</th>
                                                     <td>Number of session held</td>
-                                                    <td>12</td>
+                                                    <td><?php echo totalInforSession()?></td>
 
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">2</th>
                                                     <td>Number of students participating in information session</td>
-                                                    <td>8</td>
+                                                    <td><?php echo getStudentsAtInfoSession() ?></td>
 
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">3</th>
                                                     <td>Number of hackathon organised</td>
-                                                    <td>12</td>
+                                                    <td><?php echo totalhackton()?></td>
 
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th scope="row">4</th>
-                                                    <td>Number of entrepreneurial ctivities organized by clubs</td>
+                                                    <td>Number of entrepreneurial activities organized by clubs</td>
                                                     <td>13</td>
 
-                                                </tr>
-                                                <tr>
+                                                </tr> -->
+                                                <!-- <tr>
                                                     <th scope="row">5</th>
                                                     <td>Number of projects sent by students focused on SDGs</td>
                                                     <td>14</td>
 
-                                                </tr>
+                                                </tr> -->
                                                 <tr>
-                                                    <th scope="row">6</th>
+                                                    <th scope="row">4</th>
                                                     <td>Number of projects done and prototypes developed</td>
-                                                    <td>19</td>
+                                                    <td><?php echo inoperationProjects()?></td>
 
                                                 </tr>
                                                 <tr>
-                                                    <th scope="row">7</th>
+                                                    <th scope="row">5</th>
                                                     <td>Number of development agencies /companies partnered</td>
-                                                    <td>30</td>
+                                                    <td><?php 
+                                                    
+                                                    echo companyPartner()
+                                                    ?></td>
 
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th scope="row">8</th>
                                                     <td>Number of students undergoing capacity development training</td>
                                                     <td>15</td>
 
-                                                </tr>
-                                                <tr>
+                                                </tr> -->
+                                                <!-- <tr>
                                                     <th scope="row">9</th>
                                                     <td>Number of student entrepreneurs guided to design and create their business models</td>
                                                     <td>4</td>
 
-                                                </tr>
+                                                </tr> -->
 
-                                                <tr>
+                                                <!-- <tr>
                                                     <th scope="row">10</th>
                                                     <td>Number of student business models</td>
                                                     <td>18</td>
@@ -485,7 +489,7 @@ $result = mutiplyBarChartsForEventTypeAttendence();
                                                 <tr>
                                                     <th scope="row">11</th>
                                                     <td>Number of student business models validated</td>
-                                                    <td>10</td>
+                                                    <td>10</td> -->
 
                                                 </tr>
                                             </tbody>

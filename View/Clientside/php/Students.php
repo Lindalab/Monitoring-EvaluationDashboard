@@ -1,3 +1,11 @@
+<?php
+    require ("../../../Model/projectFunctions.php");
+    require ("../../../Model/stakeholders.php");
+    require ("../../../Model/coursesFunctions.php");
+    require ("../../../Model/eventsFunctions.php");
+    require ("../../../Model/grantFunctions.php");
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -198,51 +206,51 @@
                                             <tr>
                                                 <th scope="row ">1</th>
                                                 <td>Number of carrer fairs organized</td>
-                                                <td>21</td>
+                                                <td><?php echo totalCareerFair()?></td>
 
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <th scope="row ">2</th>
                                                 <td>Number of students that attended career fair</td>
                                                 <td>401</td>
 
-                                            </tr>
-                                            <tr>
+                                            </tr> -->
+                                            <!-- <tr>
                                                 <th scope="row ">3</th>
                                                 <td>Number of alumni attended career fair by gender</td>
                                                 <td>101</td>
 
-                                            </tr>
+                                            </tr> -->
                                             <tr>
-                                                <th scope="row ">4</th>
-                                                <td>Number of entrepreneurship competition organized for clubs</td>
-                                                <td>201</td>
+                                                <th scope="row ">2</th>
+                                                <td>Number of entrepreneurship competition organized</td>
+                                                <td><?php  echo totalhackton()?></td>
 
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <th scope="row ">5</th>
                                                 <td>Number of student that participated in competition</td>
                                                 <td>91</td>
 
-                                            </tr>
+                                            </tr> -->
                                             <tr>
-                                                <th scope="row ">6</th>
+                                                <th scope="row ">3</th>
                                                 <td>Number of exhibitions organized</td>
-                                                <td>9</td>
+                                                <td><?php echo totalExhibition()?></td>
 
                                             </tr>
                                             <tr>
-                                                <th scope="row ">7</th>
-                                                <td>Number of students that participated in pitched competition</td>
-                                                <td>21</td>
+                                                <th scope="row ">4</th>
+                                                <td>Information sessions organised</td>
+                                                <td><?php echo totalInforSession()?></td>
 
-
+<!-- 
                                                 <tr>
                                                     <th scope="row ">8</th>
                                                     <td>Number of students that exhibited product or service by gender</td>
                                                     <td>71</td>
 
-                                                </tr>
+                                                </tr> -->
 
                                         </tbody>
                                     </table>

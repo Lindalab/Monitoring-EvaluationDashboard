@@ -369,23 +369,7 @@
                                         <tbody>
                                             <tr>
                                                 <td>Number of agencies mapped out for potential funding</td>
-                                                <td>24</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Number of agencies mapped out for potential funding</td>
-                                                <td>24</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Number of agencies mapped out for potential funding</td>
-                                                <td>24</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Number of agencies mapped out for potential funding</td>
-                                                <td>24</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Number of agencies mapped out for potential funding</td>
-                                                <td>24</td>
+                                                <td><?php ?></td>
                                             </tr>
                                             <tr>
                                                 <td>Number of agencies contact has been made with</td>
@@ -395,10 +379,10 @@
                                                 <td>Number of fund-raising events organised</td>
                                                 <td>30</td>
                                             </tr>
-                                            <tr>
+                                            <!-- <tr>
                                                 <td>Number of funding agencies attracted to AVI program</td>
                                                 <td>15</td>
-                                            </tr>
+                                            </tr> -->
                                         </tbody>
                                     </table>
                                 </div>

@@ -1,3 +1,11 @@
+<?php
+    require ("../../../Model/projectFunctions.php");
+    require ("../../../Model/stakeholders.php");
+    require ("../../../Model/coursesFunctions.php");
+    require ("../../../Model/eventsFunctions.php");
+    require ("../../../Model/grantFunctions.php");
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -70,13 +78,13 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="stats stats-primary" style="background-color: rgb(37, 37, 37);color:white">
-                                <h3 class="stats-title">Number of Course Outlines</h3>
+                                <h3 class="stats-title">Number of Course</h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">200</div>
+                                        <div class="stats-number"><?php echo totalCourses();?></div>
 
                                     </div>
                                 </div>
@@ -84,13 +92,13 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="stats stats-secondary" style="background-color:rgb(238, 248, 248);color:black;">
-                                <h3 class="stats-title">Total Coaches</h3>
+                                <h3 class="stats-title">Total Course Modules</h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number"><?php echo totalModules() ?></div>
 
                                     </div>
                                 </div>
@@ -98,13 +106,13 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="stats stats-success" style="background-color:rgb(143, 2, 2); color:white;">
-                                <h3 class="stats-title">Total Company Coaches</h3>
+                                <h3 class="stats-title">Total Active Course</h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number"><?php echo totalActiveCourse(); ?></div>
 
                                     </div>
                                 </div>
@@ -118,7 +126,7 @@
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number"><?php echo totalEngineeringStudents() ?></div>
 
                                     </div>
                                 </div>
@@ -126,13 +134,13 @@
                         </div>
                         <div class="col-lg-4">
                             <div class="stats stats-warning" style="background-color:rgb(167, 123, 123); color:white;">
-                                <h3 class="stats-title">Total Engineering Projects</h3>
+                                <h3 class="stats-title">Total Computer Science Students</h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number"><?php echo totalCSstudents();?></div>
 
                                     </div>
                                 </div>
@@ -177,28 +185,19 @@
                             </div>
                             <div class="spur-card-title">Project</div>
                         </div>
-                        <div class="card-body" style="height: 200px; line-height: 3em; overflow:scroll; padding: 5px;">
-                            <table class=" table table-hover table-in-card ">
-                                <thead>
-                                    <tr>
-                                        <th scope="col ">#</th>
-                                        <th scope="col ">Project Name</th>
-                                        <th scope="col ">Invetor</th>
-                                        <th scope="col ">Status</th>
+                        <div class="card-body" style="height: 400px; line-height: 3em; overflow:scroll; padding: 5px;">
+                                    <table class=" table table-hover table-in-card ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col ">#</th>
+                                                <th scope="col ">Course Name</th>
+                                                <th scope="col ">Number of Students</th>
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row ">1</th>
-                                        <td>Gas oil filtration</td>
-                                        <td>Elorm Lamptey</td>
-                                        <td>Active</td>
-
-                                    </tr>
-
-
-                                </tbody>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php echo courseCountParticipants();?>
+                                        </tbody>
                             </table>
                         </div>
                     </div>

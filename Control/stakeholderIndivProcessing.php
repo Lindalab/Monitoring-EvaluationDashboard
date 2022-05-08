@@ -18,4 +18,11 @@ if(isset($_POST["submit"])){
     header("location: ..\View\Stakeholder.php");
     
 }
+
+$id = $_GET['id'];
+if(deleteStakeholder($stakeholderid)){
+    echo "successfully";
+}
+
+
 ?>

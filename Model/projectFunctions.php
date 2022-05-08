@@ -129,6 +129,7 @@ $Project_status, $Project_industry,$Project_location,$Project_type){
 }
 
 
+
 function totalProject(){
     $query = "select DISTINCT count(project.Projectid) as number from project";
     return totalAll($query,"number");

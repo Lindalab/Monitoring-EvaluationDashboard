@@ -167,11 +167,28 @@ function displayPotentialSponsors(){
 
 function createGrant( $stakeholderid,$Grant_name, $Grant_amount, $Date_received, $medium_received){
     $sql = "INSERT INTO `grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
-
-    return select($sql);
+    $lastid = getLastInsertedID($query);
+    grant_department($department_id, $lastid, $Grant_amount);
+    return $lastid; 
 }
 
+
+function grant_department($department_id, $Grant_id, $amount){
+    $sql = "INSERT INTO `grant_department`(`department_id`, `Grantid`, `Amountgiven`) VALUES ('$department_id','$Grant_id','$amount')";
+    $result = select($sql);
+
+}
+
+function companyPartner(){
+  $sql = "SELECT COUNT(companies.stakeholderid) as number FROM `grants`, companies,potential_sponsors, stakeholders WHERE stakeholders.stakeholderid= potential_sponsors.stakeholderid and potential_sponsors.stakeholderid = grants.stakeholderid and stakeholders.stakeholderid=companies.stakeholderid"; 
+  
+  return totalAll($sql, "number");
+}
 ?>
+
+
+
+
 
 
 
