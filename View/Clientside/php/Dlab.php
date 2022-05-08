@@ -4,6 +4,7 @@ require ("../../../Model/projectFunctions.php");
 require ("../../../Model/stakeholders.php");
 require ("../../../Model/coursesFunctions.php");
 require ("../../../Model/eventsFunctions.php");
+$result = mutiplyBarChartsForEventTypeAttendence();
 
 
 
@@ -20,6 +21,11 @@ require ("../../../Model/eventsFunctions.php");
     <link rel="stylesheet" href="../css/spur.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="../js/chart-js-config.js"></script>
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js">
+      </script>
+      <script type = "text/javascript">
+         google.charts.load('current', {packages: ['corechart']});     
+      </script>
     <title>Ashesi Entrepreneurial Center</title>
 </head>
 
@@ -213,53 +219,30 @@ require ("../../../Model/eventsFunctions.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card-body spur-card-body-chart">
+                                    <div class="card-body spur-card-body-chart" style = "width: 800px; height: 400px; margin: 0 auto" id="id">
                                         <canvas id="spurChartjsTwoBars"></canvas>
-                                        <script>
-                                            var ctx = document.getElementById("spurChartjsTwoBars").getContext('2d');
-                                            var myChart = new Chart(ctx, {
-                                                type: 'bar',
-                                                data: {
-                                                    labels: ["sessions", "hackathons", "entrepreneurial"],
-                                                    datasets: [{
-                                                        label: '2022',
-                                                        data: [12, 19, 3],
-                                                        backgroundColor: '#ffb3b3',
-                                                        borderColor: 'transparent'
-                                                    }, {
-                                                        label: '2023',
-                                                        data: [4, 12, 11],
-                                                        backgroundColor: '#cc0000',
-                                                        borderColor: 'transparent'
-                                                    }, {
-                                                        label: '2024',
-                                                        data: [12, 19, 3],
-                                                        backgroundColor: '#ff1a1a',
-                                                        borderColor: 'transparent'
-                                                    }, {
-                                                        label: '2025',
-                                                        data: [4, 12, 11],
-                                                        backgroundColor: '#800000',
-                                                        borderColor: 'transparent'
-                                                    }]
-                                                },
+                                        <script language = "JavaScript">
+         function drawChart() {
+            // Define the chart to be drawn.
+            var data = google.visualization.arrayToDataTable([
+               ['Event Type', 'Freshman', 'Sophormore', 'Junior', 'Senior'],
+        	    <?php
+        	    	while($row = mysqli_fetch_array($result)){
+        	    		echo "['".$row['EventType']."',".$row['Freshman'].",".$row['Sophormore'].",".$row['Junior'].",".$row['Senior']."],";
+        	    	}
 
+        	    ?>
+            ]);
 
+            var options = {title: 'Event And Student Populations'};  
 
-                                                options: {
-                                                    legend: {
-                                                        display: false
-                                                    },
-                                                    scales: {
-                                                        yAxes: [{
-                                                            ticks: {
-                                                                beginAtZero: true
-                                                            }
-                                                        }]
-                                                    }
-                                                }
-                                            });
-                                        </script>
+            // Instantiate and draw the chart.
+            var chart = new google.visualization.ColumnChart(document.getElementById('id'));
+            chart.draw(data, options);
+         }
+         google.charts.setOnLoadCallback(drawChart);
+      </script>
+
                                     </div>
                                 </div>
                             </div>
