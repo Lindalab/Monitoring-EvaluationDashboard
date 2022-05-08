@@ -2,6 +2,11 @@
 
 require_once "sqlfunctions.php";
 
+function numCommunitiesEngaged(){
+    $query="SELECT DISTINCT count(project.Project_location) as number from project";
+    return totalAll($query,"number");
+}
+
 function projectInfoStatus(){
     $query="Select  Project.Project_name,Individuals.fname, Individuals.lname ,Stakeholders.contact,
     Project.Project_description, Project.Project_status 
@@ -92,7 +97,7 @@ function projectCoaches(){
 
 function updateProject($Project_id, $department_id, $Project_name, $Communication_type,    
 $industry, $project_location, $project_type, $project_status){
-    $query = "UPDATE `project` SET `department_id`='$department_id',`Project_name`='$Project_name',`Communication_type`='$Communication_type',`Project_status`='$Project_status',`Project_industry`='$industry',`Project_location`='$project_location',`Project_type`='$project_type' WHERE `Projectid` = '$Project_id'";
+    $query = "UPDATE `project` SET `department_id`='$department_id',`Project_name`='$Project_name',`Communication_type`='$Communication_type',`Project_status`='$project_status',`Project_industry`='$industry',`Project_location`='$project_location',`Project_type`='$project_type' WHERE `Projectid` = '$Project_id'";
     return update($query);
 }
 
@@ -103,12 +108,12 @@ function editProjectName($Projectid, $Project_name){
 }
 
 function editProjectStatus($Projectid, $Project_Status){
-    $query = "UPDATE `project` SET `Project_status`='$Project_status' WHERE `Projectid` = '$Projectid'";
+    $query = "UPDATE `project` SET `Project_status`='$Project_Status' WHERE `Projectid` = '$Projectid'";
     return update($query);
 }
 
 function deleteProject($projectid){
-    $query = "DELETE FROM `project` WHERE `Projectid` = $projetid";
+    $query = "DELETE FROM `project` WHERE `Projectid` = $projectid";
     return delete($query);
 }
 

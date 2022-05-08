@@ -139,8 +139,13 @@ function mutiplyBarChartsForEventTypeAttendence(){
 }
 
 function studentOrganisedEvents(){
-    $query="SELECT count(event_name) from events where event_target_group= 'Students'";
+    $query="SELECT count(event_name)  from events where event_target_group= 'Students'";
     return select($query);
+}
+
+function studentOrganisedEventL(){
+    $query="SELECT count(event_name) as number from events where event_target_group= 'Students'";
+    return totalAll($query,"number");
 }
 
 function totalCareerFair(){

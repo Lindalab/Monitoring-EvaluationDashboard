@@ -58,3 +58,74 @@ setInterval(function(){
 }
 
 number of attendance for events
+
+
+
+
+<?php
+
+      $chkresults = mysqli_query($con,"SELECT MONTH(subscribed_on) AS subscriber_month, COUNT(*) AS subscriber_count FROM subscribers GROUP BY MONTH(subscribed_on)");
+
+    
+
+      ?>
+
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['Line']});
+
+      google.charts.setOnLoadCallback(drawChart);
+
+ 
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+
+           ['Month','Subscribers'],
+
+         <?php
+
+     
+
+        while($row=mysqli_fetch_assoc($chkresults)){
+
+            
+
+           echo "['".$row["subscriber_month"]."',".$row["subscriber_count"]."],";
+
+          }
+
+         ?>
+
+        ]);
+
+        var options = {
+
+          chart: {
+
+            title: '',          
+
+          },
+
+          bars: 'vertical',
+
+          vAxis: {format: 'decimal'},
+
+          height: 300,
+
+          colors: ['#d95f02']
+
+        };
+
+ 
+
+        var chart = new google.charts.Line(document.getElementById('line-chart-location'));
+
+ 
+
+        chart.draw(data, google.charts.Line.convertOptions(options));
+
+      }
+
+    </script>

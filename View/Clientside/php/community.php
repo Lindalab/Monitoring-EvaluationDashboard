@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 <?php
     require ("../../../Model/projectFunctions.php");
     require ("../../../Model/stakeholders.php");
     require ("../../../Model/coursesFunctions.php");
     require ("../../../Model/eventsFunctions.php");
     require ("../../../Model/grantFunctions.php");
+=======
+><?php
+require ("../../../Model/stakeholders.php");
+require ("../../../Model/projectFunctions.php");
+>>>>>>> 5b6f2fdd989fb70b6899c344a41249d654fd621d
 ?>
 
 <!doctype html>
@@ -82,13 +88,17 @@
                     <div class="row dash-row">
                         <div class="col-xl-4">
                             <div class="stats stats-primary" style="background-color:rgb(75, 72, 72);">
-                                <h3 class="stats-title"> Total number of workshop leaders & coaches recruited </h3>
+                                <h3 class="stats-title"> Total Coaches recruited </h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <i class="fas fa-users"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">114</div>
+                                        <div class="stats-number">
+                                            <?php
+                                           echo  totalCoaches();
+                                            ?>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -146,7 +156,11 @@
                                         <i class="fas fa-school"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number">
+                                            <?php
+                                            echo numCommunitiesEngaged();
+                                            ?>
+                                        </div>
 
                                     </div>
                                 </div>
