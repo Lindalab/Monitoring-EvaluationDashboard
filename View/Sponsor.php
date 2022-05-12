@@ -216,20 +216,20 @@
                             <div class="modal-body">
                                 <div class="form-group">
                                     <label>Sponsor name</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control"  name= "cname" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Sponsor Contact</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name= "contact" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label>Sponsor email</label>
-                                    <input type="email" class="form-control" required>
+                                    <input type="email" class="form-control" name= "email" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Sponsor Adress</label>
-                                    <input type="text" class="form-control" required>
+                                    <input type="text" class="form-control" name= "address" required>
                                 </div>
 
 
