@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
                 }
                 // Close opened CSV file
                 fclose($csvFile);
-                header("Location: ..\View\Stakeholder.php");
+                header("Location: ../View/Stakeholder.php");
         }
         else{echo "Please select valid file";}
     }

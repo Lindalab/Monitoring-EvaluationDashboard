@@ -1,5 +1,5 @@
 <?php
-   require_once "..\Model\grantFunctions.php";
+   require_once "../Model/grantFunctions.php";
 
      if(isset($_POST['submit'])){
         $stakeholderid = $_POST['stakeholder'];

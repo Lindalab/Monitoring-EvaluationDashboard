@@ -1,3 +1,8 @@
+<?php
+require "..\Model\grantFunctions.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -102,7 +107,7 @@
                     <div class="right-side">
                         <div class="box-topic" style="color: #634242">Total Grants received</div>
                         <div class="number" style="color:#634242"><?php 
-                            require "..\Model\grantFunctions.php";
+                            
                             echo displayTotalGrantsRecieved();
                         ?></div>
                         <div class="indicator">

@@ -1,5 +1,5 @@
 <?php
-     require ("..\Model\stakeholders.php");
+     require ("../Model/stakeholders.php");
 
 ?>
 

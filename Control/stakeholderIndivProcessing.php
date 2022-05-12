@@ -1,7 +1,7 @@
 <?php
-require "..\Model\dbconnect.php";
-require "..\Model\stakeholders.php";
-require_once "..\Model\sqlfunctions.php";
+require "../Model/dbconnect.php";
+require "../Model/stakeholders.php";
+require_once "../Model/sqlfunctions.php";
 
 
 

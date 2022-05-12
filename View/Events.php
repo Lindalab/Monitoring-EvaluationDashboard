@@ -1,6 +1,6 @@
 <?php
      require ("../Model/eventsFunctions.php");
-     require "..\Model\createNewEntities.php";
+     require "../Model/createNewEntities.php";
 
 
 ?>

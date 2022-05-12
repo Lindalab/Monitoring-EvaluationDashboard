@@ -1,6 +1,6 @@
 <?php
-require "..\Model\dbconnect.php";
-require "..\Model\stakeholders.php";
+require "../Model/dbconnect.php";
+require "../Model/stakeholders.php";
 
 
 
@@ -11,14 +11,14 @@ if(isset($_POST["submit"])){
 
     
     createNewDepartment($dapartmentname);
-    header("location: ..\View\Stakeholder.php");
+    header("location: ../View/Stakeholder.php");
 }
 ?>
 
 
 <?php
-require "..\Model\dbconnect.php";
-require "..\Model\stakeholders.php";
+require "../Model/dbconnect.php";
+require "../Model/stakeholders.php";
 
 
 

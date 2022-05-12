@@ -1,6 +1,6 @@
 <?php
 require "../Model/dbconnect.php";
-require "..\Model\projectFunctions.php";
+require "../Model/projectFunctions.php";
 
 
 
