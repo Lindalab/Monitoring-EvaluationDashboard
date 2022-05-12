@@ -12,7 +12,7 @@ function createNewDepartment($dapartmentname){
     return insert($query);
 }
 function addNewRoles($rolename){
-    $query="INSERT INTO `roles`(`role_name`) VALUES ('$rolename')";
+    $query="INSERT INTO `Roles`(`role_name`) VALUES ('$rolename')";
     return insert($query);
 }
 

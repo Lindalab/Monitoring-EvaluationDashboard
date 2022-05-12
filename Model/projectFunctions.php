@@ -3,7 +3,7 @@
 require_once "sqlfunctions.php";
 
 function numCommunitiesEngaged(){
-    $query="SELECT DISTINCT count(project.Project_location) as number from project";
+    $query="SELECT DISTINCT count(Project.Project_location) as number from Project";
     return totalAll($query,"number");
 }
 
@@ -20,12 +20,12 @@ function projectInfoStatus(){
 
 function projectGroupByStatus(){
     $query="SELECT project_status as Status, COUNT(Projectid) as number_of_projects 
-    from project group by project_status";
+    from Project group by project_status";
     return select($query);
 }
 
 function projectInfoByAStatus(){
-    $query="Select Project.projectid,Project.Project_name, Individuals.fname, Individuals.lname,Stakeholders.contact,Project.Project_description, Project.Project_location from Project , Stakeholders, stakeholder_project, Individuals where Project.projectid= stakeholder_project.projectid and Stakeholders.stakeholderid=stakeholder_project.stakeholderid and Stakeholders.stakeholderid= Individuals.stakeholderid and stakeholder_project.stakeholder_type = 'Owner'";
+    $query="Select Project.projectid,Project.Project_name, Individuals.fname, Individuals.lname,Stakeholders.contact,Project.Project_description, Project.Project_location from Project , Stakeholders, Stakeholder_Project, Individuals where Project.projectid= Stakeholder_Project.projectid and Stakeholders.stakeholderid=Stakeholder_Project.stakeholderid and Stakeholders.stakeholderid= Individuals.stakeholderid and Stakeholder_Project.stakeholder_type = 'Owner'";
     return select($query);
 }
 
@@ -66,18 +66,18 @@ function projectIdsAndSdgAligned($Project_id){
 
 function projectUnderADepartmentAndStatus($depart_id){
     $query=" Select Project. Project_name , Project.Project_status 
-    from Project, Department
-    where Project.department_id=Department.depart_id
+    from Project, department
+    where Project.department_id=department.depart_id
     and depart_name= '$depart_id' ";
     return select($query);
 }
 
 function projectUnderADepartmentSDG($depart_id){
     $query= "Select Project.Project_name , SDG.SD_goals 
-    from Project, SDG ,SDG_Project, Department
+    from Project, SDG ,SDG_Project, department
     where Project.Projectid= SDG_Project.Projectid
     and  SDG.SDG_ID= SDG_Project.SDG_ID
-    and Project.department_id=Department.depart_id
+    and Project.department_id=department.depart_id
     and depart_name= '$depart_id'";
     return select($query);
 }
@@ -97,36 +97,36 @@ function projectCoaches(){
 
 function updateProject($Project_id, $department_id, $Project_name, $Communication_type,    
 $industry, $project_location, $project_type, $project_status){
-    $query = "UPDATE `project` SET `department_id`='$department_id',`Project_name`='$Project_name',`Communication_type`='$Communication_type',`Project_status`='$project_status',`Project_industry`='$industry',`Project_location`='$project_location',`Project_type`='$project_type' WHERE `Projectid` = '$Project_id'";
+    $query = "UPDATE `Project` SET `department_id`='$department_id',`Project_name`='$Project_name',`Communication_type`='$Communication_type',`Project_status`='$project_status',`Project_industry`='$industry',`Project_location`='$project_location',`Project_type`='$project_type' WHERE `Projectid` = '$Project_id'";
     return update($query);
 }
 
 
 function editProjectName($Projectid, $Project_name){
-    $query = "UPDATE `project` SET `Project_name`='$Project_name', ' WHERE `Projectid` = '$Projectid'";
+    $query = "UPDATE `Project` SET `Project_name`='$Project_name', ' WHERE `Projectid` = '$Projectid'";
     return update($query);
 }
 
 function editProjectStatus($Projectid, $Project_Status){
-    $query = "UPDATE `project` SET `Project_status`='$Project_Status' WHERE `Projectid` = '$Projectid'";
+    $query = "UPDATE `Project` SET `Project_status`='$Project_Status' WHERE `Projectid` = '$Projectid'";
     return update($query);
 }
 
 function deleteProject($projectid){
-    $query = "DELETE FROM `project` WHERE `Projectid` = $projectid";
+    $query = "DELETE FROM `Project` WHERE `Projectid` = $projectid";
     return delete($query);
 }
 
 // find the a project based on the name 
 function SearchProject($projectName){
-    $query = "SELECT `Projectid`, `department_id`, `Project_SDG`, `Project_name`, `Communication_type`, `Project_status`, `Project_industry`, `Project_location`, `Project_type` FROM `project` WHERE `Project_name`LIKE '%$projectName%'";
+    $query = "SELECT `Projectid`, `department_id`, `Project_SDG`, `Project_name`, `Communication_type`, `Project_status`, `Project_industry`, `Project_location`, `Project_type` FROM `Project` WHERE `Project_name`LIKE '%$projectName%'";
     
     return select($query);
 }
 
 function insertIntoProject($department_id, $Project_name,$Project_description,$Communication_type,
 $Project_status, $Project_industry,$Project_location,$Project_type){
-    $query="INSERT INTO `project`(`department_id`, `Project_name`, `Project_description`,
+    $query="INSERT INTO `Project`(`department_id`, `Project_name`, `Project_description`,
     `Communication_type`, `Project_status`, `Project_industry`, `Project_location`, `Project_type`)
      VALUES ('$department_id','$Project_name','$Project_description','$Communication_type',
      '$Project_status','$Project_industry','$Project_location','$Project_type')";
@@ -136,42 +136,42 @@ $Project_status, $Project_industry,$Project_location,$Project_type){
 
 
 function totalProject(){
-    $query = "select DISTINCT count(project.Projectid) as number from project";
+    $query = "select DISTINCT count(project.Projectid) as number from Project";
     return totalAll($query,"number");
    }
 
    function testedProjects(){
-       $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='testing'";
+       $query="SELECT DISTINCT count(Projectid) as number from Project where Project_status='testing'";
        return totalAll($query,"number");
 
    }
 
    function prototypingProject(){
-    $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='Prototyping'";
+    $query="SELECT DISTINCT count(Projectid) as number from Project where Project_status='Prototyping'";
     return totalAll($query,"number");
 
    }
 
    function inoperationProjects(){
-    $query="SELECT DISTINCT count(Projectid) as number from project where Project_status='in-operation'";
+    $query="SELECT DISTINCT count(Projectid) as number from Project where Project_status='in-operation'";
     return totalAll($query,"number");
 
    }
 
    function dlabProject(){
-    $query="SELECT DISTINCT count(Projectid) as number from project, department where department.depart_id= project.department_id and department.depart_name='Design Lab'";
+    $query="SELECT DISTINCT count(Projectid) as number from Project, department where department.depart_id= Project.department_id and department.depart_name='Design Lab'";
     return totalAll($query,"number");
 
    }
    
    function totalSponsoredProjects(){
-    $query="SELECT count(DISTINCT project.Projectid) as number from project,grant_project,grants where project.Projectid=grant_project.Projectid and grants.Grantid=grant_project.Grantid";
+    $query="SELECT count(DISTINCT project.Projectid) as number from Project,Grant_Project,Grants where Project.Projectid=Grant_Project.Projectid and Grants.Grantid=Grant_Project.Grantid";
     return totalAll($query,"number");
 
    }
 
    function totalSponsoredEvents(){
-    $query="SELECT count(DISTINCT events.eventid) as number from events,grant_event,grants where events.eventid=grant_event.eventid and grants.Grantid=grant_event.eventid";
+    $query="SELECT count(DISTINCT Events.eventid) as number from Events,Grant_Event,Grants where Events.eventid=Grant_event.eventid and Grants.Grantid=Grant_event.eventid";
     return totalAll($query,"number");
 
    }
@@ -220,7 +220,7 @@ function totalProject(){
 
 
 function projectSDG(){
-    $query="Select project.Projectid ,project.Project_name,sdg.SD_goals, project.Project_status, concat(individuals.fname,' ', individuals.lname) as name,project.Project_type ,project.Project_industry from project,individuals,stakeholder_project,sdg,stakeholders,sdg_project where project.Projectid=stakeholder_project.projectid and stakeholders.stakeholderid=stakeholder_project.stakeholderid and individuals.stakeholderid=stakeholders.stakeholderid and sdg_project.SDG_ID=sdg.SDG_ID and project.Projectid=sdg_project.Projectid and stakeholder_project.stakeholder_type='Coache'";
+    $query="Select Project.Projectid ,Project.Project_name,SDG.SD_goals, Project.Project_status, concat(Individuals.fname,' ', Individuals.lname) as name,Project.Project_type ,Project.Project_industry from Project,Individuals,Stakeholder_project,sdg,Stakeholders,SDG_Project where Project.Projectid=Stakeholder_Project.projectid and Stakeholders.stakeholderid=Stakeholder_Project.stakeholderid and Individuals.stakeholderid=Stakeholders.stakeholderid and SDG_project.SDG_ID=SDG.SDG_ID and Project.Projectid=SDG_project.Projectid and Stakeholder_Project.stakeholder_type='Coache'";
     return select($query);
 }
 

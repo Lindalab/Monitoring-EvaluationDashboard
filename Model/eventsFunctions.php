@@ -92,85 +92,85 @@ function eventTypeAttendByAParticluarStakeholder($role_id,$eventType){
 
 
 function deleteAnEvent($eventid){
-    $query="DELETE FROM `events` WHERE eventid = '$eventid' ";
+    $query="DELETE FROM `Events` WHERE eventid = '$eventid' ";
     return delete($query);
 }
 
 function updateAnEventName($eventid, $event_name){
-    $query=" UPDATE `events` SET `event_name`='$event_name' WHERE eventid ='$eventid' ";
+    $query=" UPDATE `Events` SET `event_name`='$event_name' WHERE eventid ='$eventid' ";
     return delete($query);
 }
 
 function updateEventType($eventid, $event_type){
-    $query="UPDATE `events` SET `event_type`='$event_type' WHERE eventid= '$eventid' ";
+    $query="UPDATE `Events` SET `event_type`='$event_type' WHERE eventid= '$eventid' ";
     return delete($query);
 }
 
 function updateEventDescription($eventid, $event_description){
-    $query="UPDATE `events` SET `event_description`='$event_description' WHERE eventid= '$eventid' ";
+    $query="UPDATE `Events` SET `event_description`='$event_description' WHERE eventid= '$eventid' ";
     return delete($query);
 }
 
 function insertintoEvent($department_id,$event_name, $event_start_date, $event_end_date,
 $event_target_group,$event_type,$event_description){
-    $query= " INSERT INTO `events`(`department_id`, `event_name`, `event_start_date`, `event_end_date`, `event_target_group`,`event_type`, `event_description`)
+    $query= " INSERT INTO `Events`(`department_id`, `event_name`, `event_start_date`, `event_end_date`, `event_target_group`,`event_type`, `event_description`)
      VALUES ('$department_id','$event_name','$event_start_date',' $event_end_date','$event_target_group','$event_type','$event_description')";
     return insert($query);
 }
 
 
 function totalEvents(){
-    $query = "SELECT COUNT(eventid) as number FROM `events`";
+    $query = "SELECT COUNT(eventid) as number FROM `Events`";
     return totalAll($query,"number");
 }
 
 //Graphed
 function numberofStakeholderAttendingAnEventType(){
     $query="SELECT event_type, count(stakeholder_event.stakeholderid) as number 
-    from events, stakeholder_event 
-    where events.eventid=stakeholder_event.eventid group by event_type";
+    from Events, Stakeholder_Event 
+    where Events.eventid=Stakeholder_Event.eventid group by event_type";
     return select($query);
 }
 
 function mutiplyBarChartsForEventTypeAttendence(){
-    $query="SELECT events.event_type as EventType, SUM(students.level='Freshman') as Freshman, SUM(students.level='Sophormore') as Sophormore , SUM(students.level='Junior') as Junior, SUM(students.level='Senior') as Senior from events,individuals,students,stakeholder_event where events.eventid=stakeholder_event.eventid and individuals.stakeholderid=stakeholder_event.stakeholderid and students.stakeholderid=individuals.stakeholderid group by events.event_type";
+    $query="SELECT Events.event_type as EventType, SUM(students.level='Freshman') as Freshman, SUM(students.level='Sophormore') as Sophormore , SUM(students.level='Junior') as Junior, SUM(students.level='Senior') as Senior from Events,Individuals,Students,Stakeholder_Event where Events.eventid=Stakeholder_Event.eventid and Individuals.stakeholderid=Stakeholder_Event.stakeholderid and Students.stakeholderid=Individuals.stakeholderid group by Events.event_type";
     return select($query);
 
 }
 
 function studentOrganisedEvents(){
-    $query="SELECT count(event_name)  from events where event_target_group= 'Students'";
+    $query="SELECT count(event_name)  from Events where event_target_group= 'Students'";
     return select($query);
 }
 
 function studentOrganisedEventL(){
-    $query="SELECT count(event_name) as number from events where event_target_group= 'Students'";
+    $query="SELECT count(event_name) as number from Events where event_target_group= 'Students'";
     return totalAll($query,"number");
 }
 
 function totalCareerFair(){
-    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Career Fair'";
+    $query = "SELECT count(Events.eventid) as number from Events where events.event_type= 'Career Fair'";
     return totalAll($query,"number");
 
 }
 
 function totalhackton(){
-    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Hackathon'";
+    $query = "SELECT count(Events.eventid) as number from Events where events.event_type= 'Hackathon'";
     return totalAll($query,"number");
 }
 
 function totalExhibition(){
-    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Exhibition'";
+    $query = "SELECT count(Events.eventid) as number from Events where events.event_type= 'Exhibition'";
     return totalAll($query,"number");
 }
 
 function totalInforSession(){
-    $query = "SELECT count(events.eventid) as number from events where events.event_type= 'Information Session'";
+    $query = "SELECT count(Events.eventid) as number from Events where Events.event_type= 'Information Session'";
     return totalAll($query,"number");
 }
 
 function allFromEvent(){
-    $query="SELECT * FROM `events`";
+    $query="SELECT * FROM `Events`";
     return select($query);
 
 }

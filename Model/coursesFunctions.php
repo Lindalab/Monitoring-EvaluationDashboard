@@ -26,10 +26,10 @@ function totalInactiveCourse(){
 }
 
 function coursesAndNumberOfModules(){
-    $query=" Select  Courses.course_name AS Courses,
+    $query=" Select  courses.course_name AS Courses,
     count(modules.course_id ) As Modules 
-    from Courses, modules
-    where Courses.course_id=modules.course_id";
+    from courses, modules
+    where courses.course_id=modules.course_id";
     return select($query);
 }
 
@@ -48,35 +48,35 @@ function showAllCourses(){
 
 function showCoursesAndModules(){
     $query="Select  modules.module_name As Modules , modules.module_description As Description,
-    Courses.course_name AS Courses,Courses.course_status As CourseStatus
-    from Courses, modules
-    where Courses.course_id=modules.course_id";
+    courses.course_name AS Courses,courses.course_status As CourseStatus
+    from courses, modules
+    where courses.course_id=modules.course_id";
     return select($query);
 
 }
 
 function coursesinfoAndNumberOfModules(){
-    $query=" Select  Courses.course_name ,Courses.course_status,
+    $query=" Select  courses.course_name ,courses.course_status,
     count(modules.module_name) As Modules 
-    from Courses, modules
-    where Courses.course_id=modules.course_id";
+    from courses, modules
+    where courses.course_id=modules.course_id";
     return select($query);
 }
 
 function modulesUnderParticularCourse(){
-    $query="Select Courses.course_id, modules.module_name As Modules , modules.module_description As Description,
-    Courses.course_name AS Courses from Courses, modules
-    where Courses.course_id=modules.course_id";
+    $query="Select courses.course_id, modules.module_name As Modules , modules.module_description As Description,
+    courses.course_name AS Courses from courses, modules
+    where courses.course_id=modules.course_id";
     return select($query);
 }
 
 function deleteACourse($courseid){
-    $query="Delete from Courses where course_id = '$courseid' ";
+    $query="Delete from courses where course_id = '$courseid' ";
     return delete($query);
 }
 
 function updateACourseName($courseid, $courseName){
-    $query="Update Courses set `course_name`='$courseName' where 'course_id' = '$courseid' ";
+    $query="Update courses set `course_name`='$courseName' where 'course_id' = '$courseid' ";
     return delete($query);
 }
 

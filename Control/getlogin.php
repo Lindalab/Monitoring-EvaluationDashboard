@@ -23,7 +23,7 @@ if(isset($_POST["submit"])){
     // if form is fin
     if(count($errors) == 0){
         // Validating login Credentials
-        $sql="SELECT `email`, `password` FROM `admin`
+        $sql="SELECT `email`, `password` FROM `admins`
          WHERE  email='$email' and password = '$password' ";
          // if statement to allow Login if match found
         $result= $conn->query($sql);

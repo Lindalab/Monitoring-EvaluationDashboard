@@ -4,34 +4,34 @@
 require_once "sqlfunctions.php";
 
 function inforAboutGrant(){
-    $query="SELECT `Grantid`, `stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `grants`";
+    $query="SELECT `Grantid`, `stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `Grants`";
     return select($query);
 }
 function projectUnderGrants(){
-    $query = "select grants.Grantid, project.Projectid ,grants.Grant_name,project.Project_name,grant_project.Amountgiven\n"
+    $query = "select Grants.Grantid, Project.Projectid ,Grants.Grant_name,Project.Project_name,Grant_Project.Amountgiven\n"
 
-    . "FROM grants,grant_project,project\n"
+    . "FROM Grants,Grant_Project,Project\n"
 
-    . "WHERE grants.Grantid=grant_project.Grantid\n"
+    . "WHERE Grants.Grantid=grant_project.Grantid\n"
 
-    . "and project.Projectid=grant_project.Projectid";
+    . "and Project.Projectid=Grant_Project.Projectid";
 
     return select($query);
 
 }
 
 function eventsUnderAGrants($Grant_id){
-    $query="SELECT grants.Grantid, events.eventid,events.event_name,events.event_type
-     FROM events,grant_event,grants 
-     WHERE events.eventid=grant_event.eventid
-      and grants.Grantid=grant_event.Grantid 
-      and grants.Grantid = '$Grant_id'";
+    $query="SELECT Grants.Grantid, Events.eventid,Events.event_name,Events.event_type
+     FROM Events,Grant_Event,Grants 
+     WHERE Events.eventid=Grant_Event.eventid
+      and Grants.Grantid=Grant_Event.Grantid 
+      and Grants.Grantid = '$Grant_id'";
     return select($query);
 }
 function eventsAndGrants(){
-    $query= "select grants.Grantid, events.eventid, events.event_name ,grants.Grant_name , 
-    grant_event.Amountgiven from events,grants,grant_event where grants.Grantid=grant_event.Grantid 
-    and events.eventid= grant_event.eventid";
+    $query= "select Grants.Grantid, Events.eventid, Events.event_name ,Erants.Grant_name , 
+    Grant_Event.Amountgiven from Events,Erants,Grant_Event where Grants.Grantid=Grant_Event.Grantid 
+    and Events.eventid= rant_Event.eventid";
     return select($query);
 }
 
@@ -39,47 +39,47 @@ function eventsAndGrants(){
 
 function viewCompanyGrant(){
     $query = "
-    SELECT grants.Grantid, grants.stakeholderid, company_name,`Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `grants`, companies,potential_sponsors, stakeholders WHERE stakeholders.stakeholderid= potential_sponsors.stakeholderid and potential_sponsors.stakeholderid = grants.stakeholderid and stakeholders.stakeholderid=companies.stakeholderid";
+    SELECT Grants.Grantid, Grants.stakeholderid, company_name,`Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved` FROM `Grants`, Companies,Potential_Sponsors, Stakeholders WHERE Stakeholders.stakeholderid= Potential_Sponsors.stakeholderid and Potential_Sponsors.stakeholderid = Grants.stakeholderid and Stakeholders.stakeholderid=Companies.stakeholderid";
 
     return select($query);
 }
 
 function createPotentialSponsor($stakeholderid, $Date_ccontacted, $Contact_Status, $Medium_contact, $Reason_for_contact){
-    $query="INSERT INTO `potential_sponsors`(`stakeholderid`, `Date_contacted`, `Contact_Status`, `Medium_contact`, `Reason_for_contact`) VALUES ('$stakeholderid','$Date_ccontacted','$Contact_Status','$Medium_contact','$Reason_for_contact')";
+    $query="INSERT INTO `Potential_sponsors`(`stakeholderid`, `Date_contacted`, `Contact_Status`, `Medium_contact`, `Reason_for_contact`) VALUES ('$stakeholderid','$Date_ccontacted','$Contact_Status','$Medium_contact','$Reason_for_contact')";
     return insert($query);
 }
 
 function addNewGrant($stakeholderid, $Grant_name, $Grant_amount, $Date_received, $medium_received){
-    $query = "INSERT INTO `grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
+    $query = "INSERT INTO `Grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
      return insert($query);   
 }
 
 function totalGrantRecieved(){
     $name= "Total Grants";
-    $query="SELECT sum(grants.Grant_Amount) as amount FROM grants";
+    $query="SELECT sum(Grants.Grant_Amount) as amount FROM Grants";
     return select($query);
 }
 
 function totalDepartmentUnderGrant(){
-    $query = "SELECT COUNT(DISTINCT department_id) as total FROM `grant_department` WHERE 1";
+    $query = "SELECT COUNT(DISTINCT department_id) as total FROM `Grant_Department` WHERE 1";
     return select($query);
 }
 
 
 function departmentTotalGrant(){
-    $query = "SELECT department.depart_id, department.depart_name as Department, SUM(`Amountgiven`) as total_grant FROM `grant_department`, department, grants WHERE grant_department.department_id = department.depart_id and grants.Grantid = grant_department.Grantid GROUP BY department.depart_id";
+    $query = "SELECT department.depart_id, department.depart_name as department, SUM(`Amountgiven`) as total_grant FROM `Grant_Department`, department, Grants WHERE Grant_Department.department_id = department.depart_id and Grants.Grantid = Grant_Department.Grantid GROUP BY department.depart_id";
 
     return select($query);
 }
 
 function grantForDepartment(){
-    $query = "SELECT department.depart_id, grants.Grantid, grants.Grant_name, department.depart_name, `Amountgiven` FROM `grant_department`, department, grants WHERE grant_department.department_id = department.depart_id and grants.Grantid = grant_department.Grantid";
+    $query = "SELECT department.depart_id, Grants.Grantid, Grants.Grant_name, department.depart_name, `Amountgiven` FROM `Grant_Department`, department, Grants WHERE Grant_Department.department_id = department.depart_id and Grants.Grantid = Grant_Department.Grantid";
 
     return select($query);
 }
 
 function projectTotalGrantReceived(){
-    $query = "SELECT `Grantid`, project.Project_name, project.Projectid, SUM(`Amountgiven`) as total FROM `grant_project`, project WHERE grant_project.Projectid = project.Projectid";
+    $query = "SELECT `Grantid`, Project.Project_name, Project.Projectid, SUM(`Amountgiven`) as total FROM `Grant_Project`, Project WHERE Grant_Project.Projectid = Project.Projectid";
 
     return totalAll($query,"total");
 }
@@ -96,7 +96,7 @@ function displayTotalGrantsRecieved(){
 }
 
 function displayTotalProjectUnderGrants(){
-    $query = "SELECT COUNT(DISTINCT`Projectid`) as number FROM `grant_project`";
+    $query = "SELECT COUNT(DISTINCT`Projectid`) as number FROM `Grant_Project`";
     return totalAll($query,"number");
 }
 
@@ -141,9 +141,9 @@ function displayTableData(){
 }
 
 function displayPotentialSponsors(){
-    $sql = 'SELECT stakeholders.stakeholderid as id, Concat(individuals.fname," ", individuals.lname) as name from stakeholders, individuals, potential_sponsors where stakeholders.stakeholderid = individuals.stakeholderid and stakeholders.stakeholderid = potential_sponsors.stakeholderid';
+    $sql = 'SELECT Stakeholders.stakeholderid as id, Concat(Individuals.fname," ", Individuals.lname) as name from Stakeholders, Individuals, Potential_Sponsors where Stakeholders.stakeholderid = Individuals.stakeholderid and Stakeholders.stakeholderid = Potential_Sponsors.stakeholderid';
 
-    $query = 'SELECT stakeholders.stakeholderid as id, companies.company_name as name from stakeholders, companies, potential_sponsors where stakeholders.stakeholderid = companies.stakeholderid and stakeholders.stakeholderid = potential_sponsors.stakeholderid';
+    $query = 'SELECT Stakeholders.stakeholderid as id, Companies.company_name as name from Stakeholders, Companies, Potential_Sponsors where Stakeholders.stakeholderid = Companies.stakeholderid and Stakeholders.stakeholderid = Potential_Sponsors.stakeholderid';
 
     $result = select($sql);
     $result2 = select($query);
@@ -166,7 +166,7 @@ function displayPotentialSponsors(){
 }
 
 function createGrant( $stakeholderid,$Grant_name, $Grant_amount, $Date_received, $medium_received){
-    $sql = "INSERT INTO `grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
+    $sql = "INSERT INTO `Grants`(`stakeholderid`, `Grant_name`, `Grant_Amount`, `Date_Recieved`, `Medium_recieved`) VALUES ('$stakeholderid','$Grant_name','$Grant_amount','$Date_received','$medium_received')";
     $lastid = getLastInsertedID($query);
     grant_department($department_id, $lastid, $Grant_amount);
     return $lastid; 
@@ -174,19 +174,19 @@ function createGrant( $stakeholderid,$Grant_name, $Grant_amount, $Date_received,
 
 
 function grant_department($department_id, $Grant_id, $amount){
-    $sql = "INSERT INTO `grant_department`(`department_id`, `Grantid`, `Amountgiven`) VALUES ('$department_id','$Grant_id','$amount')";
+    $sql = "INSERT INTO `Grant_Department`(`department_id`, `Grantid`, `Amountgiven`) VALUES ('$department_id','$Grant_id','$amount')";
     $result = select($sql);
 
 }
 
 function companyPartner(){
-  $sql = "SELECT COUNT(companies.stakeholderid) as number FROM `grants`, companies,potential_sponsors, stakeholders WHERE stakeholders.stakeholderid= potential_sponsors.stakeholderid and potential_sponsors.stakeholderid = grants.stakeholderid and stakeholders.stakeholderid=companies.stakeholderid"; 
+  $sql = "SELECT COUNT(companies.stakeholderid) as number FROM `Grants`, Companies,Potential_Sponsors, stakeholders WHERE stakeholders.stakeholderid= potential_sponsors.stakeholderid and potential_sponsors.stakeholderid = grants.stakeholderid and stakeholders.stakeholderid=companies.stakeholderid"; 
   
   return totalAll($sql, "number");
 }
 
 function pontTotal(){
-    $sql="SELECT COUNT(*) as number FROM `potential_sponsors`";
+    $sql="SELECT COUNT(*) as number FROM `Potential_Sponsors`";
     return totalAll($sql, "number");
 }
 ?>
