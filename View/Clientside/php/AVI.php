@@ -125,6 +125,7 @@ require ("../../../Model/grantFunctions.php");
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-xl-4">
                             <div class="stats" style="background-color:rgb(175, 4, 4); color:white;">
                                 <h3 class="stats-title"> Total Employment Created</h3>

@@ -127,28 +127,27 @@
                 $gender = $row['gender'];
                 $contact = $row['contact'];
                 $role_name = $row['role_name'];
-
-                echo "<tr> <td>
+?>
+                <tr> <td>
         <span class='custom-checkbox'>
             <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
             <label for='checkbox1'></label>
         </span>
     </td>
-    <td>$fname</td>
-    <td>$lname</td>
-    <td>$email</td>
-    <td>$gender</td>
-    <td>$contact</td>
-    <td>$role_name</td>
+    <td><?php echo $fname ?></td>
+    <td><?php echo $lname ?></td>
+    <td><?php echo $email ?></td>
+    <td><?php echo $gender ?></td>
+    <td><?php echo $contact ?></td>
+    <td><?php echo $role_name ?></td>
     <td>
         <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
-
-        <a href='..\Control\stakeholderIndivProcessing.php?uerid=<?php echo $id ?>'
-     onclick='return confirm('Are you sure you want to delete?')'<strong>Delete </strong></a>
+        <a href='..\Control\stakeholderIndivProcessing.php?id=<?php echo $row['stakeholderid'] ?>' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i> </a>
 
     </td>
-</tr>";
-            }
+</tr>
+        
+<?php }
         }
 
        

@@ -19,4 +19,25 @@ if(isset($_POST["submitS"])){
    
     
 }
+
+
+// Delete stakehoder record
+$ids = $_GET["id"];
+
+$sql = "DELETE FROM `companies` WHERE `stakeholderid`='" . $_GET["id"] . "'";
+if (mysqli_query($conn, $sql)) {
+    echo  "<script>
+    alert('Record deleted Successfully');
+    window.location.href='..\View\Stakeholder.php';
+    </script>; 
+    ";
+    
+} else {
+    echo "Error deleting record: " . mysqli_error($conn);
+}
+mysqli_close($conn);
+
+
+
+
 ?>
