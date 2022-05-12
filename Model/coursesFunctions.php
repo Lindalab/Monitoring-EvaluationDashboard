@@ -64,7 +64,7 @@ function coursesinfoAndNumberOfModules(){
 }
 
 function modulesUnderParticularCourse(){
-    $query="Select  modules.module_name As Modules , modules.module_description As Description,
+    $query="Select Courses.course_id, modules.module_name As Modules , modules.module_description As Description,
     Courses.course_name AS Courses from Courses, modules
     where Courses.course_id=modules.course_id";
     return select($query);

@@ -12,6 +12,7 @@ if(isset($_POST["Submit"])){
     $courseDescription=$_POST["cdescription"];
 
     insertintoCourse($courseName,$courseDate, $courseStatus, $courseDescription);
+    header("location: ..\View\Stakeholder.php");
     
 
     

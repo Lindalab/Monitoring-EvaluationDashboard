@@ -434,7 +434,7 @@ require "..\Model\createNewEntities.php";
                         <!---Populating the table with entries-->
                         <tbody>
                             <?php
-                        displayProjectSDG();
+                        echo displayProjectSDG();
                         ?>   
                     </tbody>
                     </table>

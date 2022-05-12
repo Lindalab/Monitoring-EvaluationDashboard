@@ -143,7 +143,9 @@
     <td>
         <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
 
-        <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
+        <a href='..\Control\stakeholderIndivProcessing.php?uerid=<?php echo $id ?>'
+     onclick='return confirm('Are you sure you want to delete?')'<strong>Delete </strong></a>
+
     </td>
 </tr>";
             }
@@ -151,6 +153,7 @@
 
        
     }
+
 
 
 // role_id,role_name
@@ -197,7 +200,7 @@
     
     <td>
                 
-        <form action = '/MonitoringEvaluationDashboard/Control/stakeholderIndivProcessing.php' method = 'POST'>
+        <form action = '/MonitoringEvaluationDashboard/Control/stakeholderCompanyProcessing.php' method = 'POST'>
             <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
             <a href='#deleteEmployeeModal' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></a>
             <button> </button>

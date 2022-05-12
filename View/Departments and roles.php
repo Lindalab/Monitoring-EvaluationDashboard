@@ -120,8 +120,10 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Active Project</div>
-                        <div class="number">45</div>
+                        <div class="box-topic">Business Enterprise</div>
+                        <div class="number">
+                            <?php echo totalBusinessProject(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -131,8 +133,10 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Inactive Projects</div>
-                        <div class="number">23</div>
+                        <div class="box-topic">Social Project</div>
+                        <div class="number">
+                            <?php echo totalSocialProject(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -142,8 +146,10 @@
                 </div>
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Total Events</div>
-                        <div class="number">106</div>
+                        <div class="box-topic">Total SDG Covered</div>
+                        <div class="number">
+                            <?php echo totalSDGProject(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-down-arrow-alt down'></i>
                             <span class="text">Down From Today</span>
@@ -315,45 +321,12 @@
                                         </span>
                                     </th>
                                     <th>Department Name</th>
-                                    <th>Total Project</th>
-                                    <th>Toatl Events</th>
+                                    <th>Total Event</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>career Services</td>
-                                    <td>Career Fair</td>
-                                    <td>Fair</td>
-
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Student Council</td>
-                                    <td>Burnt Shade</td>
-                                    <td>Business Fair</td>
-
-                                    <td>
-                                        <a href="#editEmployee" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployee" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
+                                <?php echo displayDeptEvent(); ?>
 
                             </tbody>
                         </table>

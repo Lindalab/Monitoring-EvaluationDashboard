@@ -12,6 +12,7 @@ if(isset($_POST["submit"])){
     
 
     insertintoModules($course_id,$module_name, $module_description);
+    header("location: ..\View\Stakeholder.php");
     
 
     

@@ -17,6 +17,7 @@ if(isset($_POST["submit"])){
 
     insertIntoProject($department_id, $projectName,$projectDescription,$communicationType,
     $projectStatus, $projectIndustry,$projectLocation,$projectType);
+    header("location: ..\View\Stakeholder.php");
     
 
     

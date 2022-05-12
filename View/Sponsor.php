@@ -1,3 +1,9 @@
+<?php
+  require ("..\Model\stakeholders.php");
+  require "..\Model\projectFunctions.php";
+?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -105,7 +111,9 @@
                 <div class="box">
                     <div class="right-side">
                         <div class="box-topic">Total Sponsors</div>
-                        <div class="number">300</div>
+                        <div class="number">
+                            <?php echo totalCompanies(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -116,8 +124,10 @@
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Contacted Sponsors</div>
-                        <div class="number">10</div>
+                        <div class="box-topic">Total Sponsored Project</div>
+                        <div class="number">
+                            <?php echo totalSponsoredProjects(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -129,8 +139,10 @@
 
                 <div class="box">
                     <div class="right-side">
-                        <div class="box-topic">Interest Projects</div>
-                        <div class="number">15</div>
+                        <div class="box-topic">Total Sponsored Event</div>
+                        <div class="number">
+                            <?php echo totalSponsoredEvents(); ?>
+                        </div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt'></i>
                             <span class="text">Up from yesterday</span>
@@ -139,18 +151,7 @@
                     <h1 style="text-align: right; width: 50px; margin-top:5px; color:lightblue;"><i class="bi bi-archive"></i></h1>
                 </div>
 
-                <div class="box">
-                    <div class="right-side">
-                        <div class="box-topic">Sponsors contacted</div>
-                        <div class="number">19</div>
-                        <div class="indicator">
-                            <i class='bx bx-up-arrow-alt'></i>
-                            <span class="text">Up from yesterday</span>
-                        </div>
-                    </div>
-                    <h1 style="text-align: right; width: 50px; margin-top:5px; color:lightpink;"><i class="bi bi-journal-plus"></i></h1>
-                </div>
-            </div>
+               
 
 
             <!--Put crud here-->
@@ -177,100 +178,15 @@
                                             <label for="selectAll"></label>
                                         </span>
                                     </th>
-                                    <th>Sponsor type</th>
-                                    <th>Sponsor email</th>
+                                    <th>Sponsor name</th>
                                     <th>Sponsor Contact</th>
-                                    <th>Sponsor Project Interest</th>
-                                    <th>Sponsor Status</th>
+                                    <th>Sponsor email</th>
+                                    <th>Sponsor Adress</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                            <label for="checkbox1"></label>
-                                        </span>
-                                    </td>
-                                    <td>Company</td>
-                                    <td>mach.mala @ashesi.edu.gh</td>
-                                    <td>0 779 380 450</td>
-                                    <td>Design Lab</td>
-                                    <td>Not Contacted</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                            <label for="checkbox2"></label>
-                                        </span>
-                                    </td>
-                                    <td>Company</td>
-                                    <td>mach. mala@ashesi. edu.gh</td>
-                                    <td>0779 380 450</td>
-                                    <td>Design Lab</td>
-                                    <td>Contacted</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                            <label for="checkbox3"></label>
-                                        </span>
-                                    </td>
-                                    <td>Company</td>
-                                    <td>mach.mala @ashesi. edu.gh</td>
-                                    <td>0779 380 450</td>
-                                    <td>Design Lab</td>
-                                    <td>COotacted</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                            <label for="checkbox4"></label>
-                                        </span>
-                                    </td>
-                                    <td>Individual</td>
-                                    <td>mach.mala @ashesi. edu.gh</td>
-                                    <td>0779 380 450</td>
-                                    <td>Design Lab</td>
-                                    <td>Contacted</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="custom-checkbox">
-                                            <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                            <label for="checkbox5"></label>
-                                        </span>
-                                    </td>
-                                    <td>Company</td>
-                                    <td>mach. mal@ashesi. edu.gh</td>
-                                    <td>0779 380 450</td>
-                                    <td>Design Lab</td>
-                                    <td>Not Contacted</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr>
+                                <?php echo displaytablesCompanies(); ?>
                             </tbody>
                         </table>
                         <div class="clearfix">
@@ -292,43 +208,35 @@
             <div id="addEmployeeModal" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form>
+                        <form   action= "..\Control\stakeholderCompanyPro.php" method="post">
                             <div class="modal-header">
                                 <h4 class="modal-title">Add Sponsor</h4>
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label>Sponsor Type</label>
+                                    <label>Sponsor name</label>
                                     <input type="text" class="form-control" required>
                                 </div>
-                                <div class="form-group">
-                                    <label>Sponsor Email</label>
-                                    <input type="email" class="form-control" required>
-                                </div>
-
                                 <div class="form-group">
                                     <label>Sponsor Contact</label>
                                     <input type="text" class="form-control" required>
                                 </div>
+
                                 <div class="form-group">
-                                    <label>Sponsor Project Interest</label>
+                                    <label>Sponsor email</label>
+                                    <input type="email" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sponsor Adress</label>
                                     <input type="text" class="form-control" required>
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Sponsor status</label>
-                                    <select class="form-control">Select Status>
-                                        <option value="Active">Add Sponsor Status</option>
-                                        <option value="Active">Contacted </option>
-                                        <option value="Inctive">Not Contacted </option>
-                                    </select>
-                                </div>
 
                             </div>
                             <div class="modal-footer">
                                 <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                <input type="submit" class="btn btn-success" style="color: white; background-color: rgb(124, 15, 15)" value="Add">
+                                <input type="submit" class="btn btn-success" name="submitS" style="color: white; background-color: rgb(124, 15, 15)" value="Add">
                             </div>
                         </form>
                     </div>
@@ -403,10 +311,7 @@
                 </div>
             </div>
 
-            <div class="button">
-                <a href="#">See All</a>
-            </div>
-
+            
     </section>
 
     <script>

@@ -15,6 +15,7 @@ if(isset($_POST["submit"])){
 
     insertintoEvent($department_id,$eventName, $eventStartDate, $eventEndDate,
 $eventTargetGroup,$eventType,$eventDescription);
+header("location: ..\View\Stakeholder.php");
     
 
     

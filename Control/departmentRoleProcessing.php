@@ -11,7 +11,7 @@ if(isset($_POST["submit"])){
 
     
     createNewDepartment($dapartmentname);
-    
+    header("location: ..\View\Stakeholder.php");
 }
 ?>
 
@@ -29,6 +29,7 @@ if(isset($_POST["submitrole"])){
 
     
     addNewRoles($rolename);
+    header("location: ..\View\Stakeholder.php");
     
 }
 ?>

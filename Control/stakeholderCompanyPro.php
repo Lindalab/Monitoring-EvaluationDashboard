@@ -4,15 +4,19 @@ require "..\Model\stakeholders.php";
 
 
 
-if(isset($_POST["submit"])){
-    $company_name= $_POST["cname"];
-    $contact=$_POST["contact"];
-    $email=$_POST["email"];
-    $address=$_POST["address"];
-    
+if(isset($_POST["submitS"])){
+    $potential_name= $_POST["cname"];
+    $pcontact=$_POST["contact"];
+    $pemail=$_POST["email"];
+    $paddress=$_POST["address"];
 
     
-    createCompany($company_name, $contact, $email, $address);
+        createCompany($potential_name, $pcontact, $pemail, $paddress);
+        header("location: ..\View\Sponsor.php");
+   
+
+    
+   
     
 }
 ?>

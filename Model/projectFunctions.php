@@ -163,8 +163,18 @@ function totalProject(){
     return totalAll($query,"number");
 
    }
+   
+   function totalSponsoredProjects(){
+    $query="SELECT count(DISTINCT project.Projectid) as number from project,grant_project,grants where project.Projectid=grant_project.Projectid and grants.Grantid=grant_project.Grantid";
+    return totalAll($query,"number");
 
-   function totalEngineeringProjects(){}
+   }
+
+   function totalSponsoredEvents(){
+    $query="SELECT count(DISTINCT events.eventid) as number from events,grant_event,grants where events.eventid=grant_event.eventid and grants.Grantid=grant_event.eventid";
+    return totalAll($query,"number");
+
+   }
 
 
 
@@ -210,7 +220,7 @@ function totalProject(){
 
 
 function projectSDG(){
-    $query="Select project.Projectid ,project.Project_name,sdg.SD_goals, project.Project_status, concat(individuals.fname,' ', individuals.lname) as name,project.Project_type ,project.Project_industry from project,individuals,stakeholder_project,sdg,stakeholders,sdg_project where project.Projectid=stakeholder_project.projectid and stakeholders.stakeholderid=stakeholder_project.stakeholderid and individuals.stakeholderid=stakeholders.stakeholderid and sdg_project.SDG_ID=sdg.SDG_ID and project.Projectid=sdg_project.Projectid and stakeholder_project.stakeholder_type='Coaches'";
+    $query="Select project.Projectid ,project.Project_name,sdg.SD_goals, project.Project_status, concat(individuals.fname,' ', individuals.lname) as name,project.Project_type ,project.Project_industry from project,individuals,stakeholder_project,sdg,stakeholders,sdg_project where project.Projectid=stakeholder_project.projectid and stakeholders.stakeholderid=stakeholder_project.stakeholderid and individuals.stakeholderid=stakeholders.stakeholderid and sdg_project.SDG_ID=sdg.SDG_ID and project.Projectid=sdg_project.Projectid and stakeholder_project.stakeholder_type='Coache'";
     return select($query);
 }
 
@@ -226,7 +236,7 @@ function displayProjectSDG(){
         //<th>Project Industry</th>
         if($result->num_rows > 0){
             while($row = mysqli_fetch_assoc($result)){
-                $id = $row['projectid'];
+                $id = $row['Projectid'];
                 $projectName = $row['Project_name'];
                 $SD_goals = $row['SD_goals'];
                 $Project_status = $row['Project_status'];
