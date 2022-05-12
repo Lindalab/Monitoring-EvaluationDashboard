@@ -54,7 +54,7 @@
     }
 
     function viewAllCompanies(){
-        $query = "SELECT Stakeholders.stakeholderid ,Companies.company_name,Stakeholders.contact,Stakeholders.email,Stakeholders.address from Stakeholders,Sompanies where Stakeholders.stakeholderid=Companies.stakeholderid";
+        $query = "SELECT Stakeholders.stakeholderid ,Companies.company_name,Stakeholders.contact,Stakeholders.email,Stakeholders.address from Stakeholders,Companies where Stakeholders.stakeholderid=Companies.stakeholderid";
         return select($query);
     }
 
@@ -127,27 +127,30 @@
                 $gender = $row['gender'];
                 $contact = $row['contact'];
                 $role_name = $row['role_name'];
-?>
-                <tr> <td>
+
+              echo"  <tr> <td>
         <span class='custom-checkbox'>
             <input type='checkbox' id='checkbox1' name='options[]' value='$id'>
             <label for='checkbox1'></label>
         </span>
     </td>
-    <td><?php echo $fname ?></td>
-    <td><?php echo $lname ?></td>
-    <td><?php echo $email ?></td>
-    <td><?php echo $gender ?></td>
-    <td><?php echo $contact ?></td>
-    <td><?php echo $role_name ?></td>
+    <td> $fname </td>
+    <td> $lname </td>
+    <td> $email </td>
+    <td> $gender </td>
+    <td> $contact </td>
+    <td> $role_name</td>
     <td>
-        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
-        <a href='..\Control\stakeholderIndivProcessing.php?id=<?php echo $row['stakeholderid'] ?>' class='delete' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i> </a>
+    <form action = '..\Control\stakeholderIndivProcessing.php' method = 'POST'>
+    <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+        
+    <input type = 'hidden' value = '$id' name = 'id'>
+    <button type='submit'data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></button>
+    </form>
 
     </td>
-</tr>
-        
-<?php }
+</tr>";
+}
         }
 
        
@@ -199,11 +202,11 @@
     
     <td>
                 
-        <form action = '/MonitoringEvaluationDashboard/Control/stakeholderCompanyProcessing.php' method = 'POST'>
-            <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
+        <form action = '../Control/stakeholderCompanyPro.php' method = 'POST'>
+        <a href='#editEmployeeModal' class='edit' data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Edit' on>&#xE254;</i></a>
             
-            <button> </button>
-            <button type='submit'data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></button>
+        <input type = 'hidden' value = '$id' name = 'id'>
+        <button type='submit'data-toggle='modal'><i class='material-icons' data-toggle='tooltip' title='Delete' >&#xE872;</i></button>
         </form>
     </td>
 </tr>";

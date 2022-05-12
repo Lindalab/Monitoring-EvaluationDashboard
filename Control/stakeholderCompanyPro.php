@@ -22,9 +22,9 @@ if(isset($_POST["submitS"])){
 
 
 // Delete stakehoder record
-$ids = $_GET["id"];
+$ids = $_POST["id"];
 
-$sql = "DELETE FROM `companies` WHERE `stakeholderid`='" . $_GET["id"] . "'";
+$sql = "DELETE FROM `companies` WHERE `stakeholderid`=$ids";
 if (mysqli_query($conn, $sql)) {
     echo  "<script>
     alert('Record deleted Successfully');

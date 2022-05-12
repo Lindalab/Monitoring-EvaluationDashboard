@@ -34,7 +34,7 @@
                     <div style="width: 100%; height:60%; margin:auto;">
 
                         <!-- Form containing the login page -->
-                        <form style="width:90%; margin:auto;" method="post" action="/MonitoringEvaluationDashboard/Control/getlogin.php">
+                        <form style="width:90%; margin:auto;" method="post" action="../../../Control/getlogin.php">
                             <h1 style="margin-bottom:-1.5em;">
 
                                 <!-- Ashesi Entreprenuerships Centre LOGO -->

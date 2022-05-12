@@ -24,13 +24,13 @@ if(isset($_POST["submit"])){
     if(count($errors) == 0){
         // Validating login Credentials
         $sql="SELECT `email`, `password` FROM `admins`
-         WHERE  email='$email' and password = '$password' ";
+         WHERE  email ='$email' and password = '$password' ";
          // if statement to allow Login if match found
         $result= $conn->query($sql);
-
+        
 
          if($result-> num_rows > 0){
-            header("location:..\View\Stakeholder.php");
+            header("location:../View/Stakeholder.php");
             exit;
         }
          else{
