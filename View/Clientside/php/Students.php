@@ -95,7 +95,9 @@
                                         <i class="fas fa-user"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">114</div>
+                                        <div class="stats-number">
+                                            <?php echo totalStudent(); ?>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -103,13 +105,15 @@
                         </div>
                         <div class="col-xl-4">
                             <div class="stats stats-success " style="background-color:rgb(238, 248, 248); color:black;">
-                                <h3 class="stats-title"> Grants </h3>
+                                <h3 class="stats-title">Total  Grants </h3>
                                 <div class="stats-content">
                                     <div class="stats-icon">
                                         <i class="fas fa-cart-arrow-down"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">GHC 25,541</div>
+                                        <div class="stats-number">
+                                            <?php echo totalGrantRecieved(); ?>
+                                        </div>
 
                                     </div>
                                 </div>
@@ -123,7 +127,9 @@
                                         <i class="fas fa-phone"></i>
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">200</div>
+                                        <div class="stats-number">
+                                            <?php echo totalEvents(); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -167,7 +173,7 @@
                           ?>  
                      ]);  
                 var options = {  
-                      title: 'Percentage of Male and Female Employee',  
+                      title: 'Percentage of Department Grant',  
                       is3D:true,  
                       pieHole: 0.4  
                      };  

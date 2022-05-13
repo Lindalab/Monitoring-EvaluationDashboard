@@ -57,7 +57,7 @@ function addNewGrant($stakeholderid, $Grant_name, $Grant_amount, $Date_received,
 function totalGrantRecieved(){
     $name= "Total Grants";
     $query="SELECT sum(Grants.Grant_Amount) as amount FROM Grants";
-    return select($query);
+    return totalAll($query,"amount");
 }
 
 function totalDepartmentUnderGrant(){

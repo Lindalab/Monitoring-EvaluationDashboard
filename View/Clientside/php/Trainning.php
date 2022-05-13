@@ -109,7 +109,7 @@
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number"><?php echo totalModules() ?></div>
+                                        <div class="stats-number"><?php echo totalModules(); ?></div>
 
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number"><?php echo totalEngineeringStudents() ?></div>
+                                        <div class="stats-number"><?php echo totalEngineeringStudents(); ?></div>
 
                                     </div>
                                 </div>
@@ -165,7 +165,9 @@
                                         <!-- <i class="fas fa-cart-arrow-down"></i> -->
                                     </div>
                                     <div class="stats-data">
-                                        <div class="stats-number">100</div>
+                                        <div class="stats-number">
+                                            <?php echo totalCoaches(); ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -185,32 +187,6 @@
                             </div>
                         </div> -->
 
-                    </div>
-                </div>
-
-              <div class="col-lg">
-                    <div class="card spur-card">
-                        <div class="card-header">
-                            <div class="spur-card-icon">
-                                <i class="fas fa-table"></i>
-                            </div>
-                            <div class="spur-card-title">Project</div>
-                        </div>
-                        <div class="card-body" style="height: 400px; line-height: 3em; overflow:scroll; padding: 5px;">
-                                    <table class=" table table-hover table-in-card ">
-                                        <thead>
-                                            <tr>
-                                                <th scope="col ">#</th>
-                                                <th scope="col ">Course Name</th>
-                                                <th scope="col ">Number of Students</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        <?php echo courseCountParticipants();?>
-                                        </tbody>
-                            </table>
-                        </div>
                     </div>
                 </div>
 
@@ -242,7 +218,7 @@
             var options = {title: 'Number of Courses'};  
 
             // Instantiate and draw the chart.
-            var chart = new google.visualization.ColumnChart(document.getElementById('Id1'));
+            var chart = new google.visualization.PieChart(document.getElementById('Id1'));
             chart.draw(data, options);
          }
          google.charts.setOnLoadCallback(drawChart);
